@@ -14,3 +14,14 @@ ohat122625 <- smartbe("2022/Ohat1625.TXT")
 ohat122a21 <- smartbe("2022/Ohat1a21.TXT")
 ohat1 <- rbind(ohat121a09, ohat121b27,ohat121c28,ohat122414mod,ohat122625, ohat122a21)
 plot(ohat1$Measure, type = "l")
+
+## Időbélyeg készítés
+tttime <- ohat1[,1]
+tttime <- gsub("\\.", "-", tttime)
+tttime <- as.POSIXct(tttime)
+plot(tttime,ohat1$Measure, type = "l")
+
+## Idősor osztályú objektum
+library(xts)
+ohat1.xts  <- xts(ohat1[,2], tttime)
+plot(ohat1.xts)
