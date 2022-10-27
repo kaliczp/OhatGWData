@@ -25,3 +25,6 @@ plot(tttime,ohat1$Measure, type = "l")
 library(xts)
 ohat1.xts  <- xts(ohat1[,2], tttime)
 plot(ohat1.xts)
+
+## https://github.com/kaliczp/Whitexts/blob/master/Whitexts.R
+oh.w <- White(ohat1.xts['2021-07-01 23:50:00/2021-07-15'])
