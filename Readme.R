@@ -34,5 +34,14 @@ plot(ohat1.xts)
 ohat1.xts['2022-06-16 08:40/2022-06-25 09:00'] <- NA
 ohat1.xts['2022-08-05 10:00/2022-09-22 19:30'] <- NA
 
+## Teljes időszak plot
+png(file = paste0("Ohat1/Ohatfull.png"), width = 15, height = 8, unit = "cm", res=300)
+par(mar = c(3.1, 3.1, 0.2, 0.2), mgp = c(2,1,0))
+plot.zoo(ohat1.xts, xaxt = "n", xlab ="", ylab = "h [m]", lwd = 2, xaxs = "i")
+timeaxtics <- seq(as.POSIXct("2021-07-01"), as.POSIXct("2022-10-21") , by = "month")
+axis(1, at = timeaxtics, labels = FALSE)
+axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
+dev.off()
+
 ## https://github.com/kaliczp/Whitexts/blob/master/Whitexts.R
 oh.w <- White(ohat1.xts['2021-07-01 23:50:00/2021-07-15'])
