@@ -30,5 +30,9 @@ library(xts)
 ohat1.xts  <- xts(ohat1[,2], tttime)
 plot(ohat1.xts)
 
+## Alulcsordulások adathiánnyá alakítása
+ohat1.xts['2022-06-16 08:40/2022-06-25 09:00'] <- NA
+ohat1.xts['2022-08-05 10:00/2022-09-22 19:30'] <- NA
+
 ## https://github.com/kaliczp/Whitexts/blob/master/Whitexts.R
 oh.w <- White(ohat1.xts['2021-07-01 23:50:00/2021-07-15'])
