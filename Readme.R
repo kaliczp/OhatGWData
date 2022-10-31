@@ -46,5 +46,8 @@ axis(1, at = timeaxtics, labels = FALSE)
 axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
 dev.off()
 
+## Export full time-series
+write.zoo(ohat1.xts, "Ohat1/Ohat1xts.csv", sep = ";", dec = ",")
+
 ## https://github.com/kaliczp/Whitexts/blob/master/Whitexts.R
 oh.w <- White(ohat1.xts['2021-07-01 23:50:00/2021-07-15'])
