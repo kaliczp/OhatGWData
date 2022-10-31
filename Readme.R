@@ -51,3 +51,34 @@ write.zoo(ohat1.xts, "Ohat1/Ohat1xts.csv", sep = ";", dec = ",")
 
 ## https://github.com/kaliczp/Whitexts/blob/master/Whitexts.R
 oh.w <- White(ohat1.xts['2021-07-01 23:50:00/2021-07-15'])
+
+## 2021
+idok <- seq(as.POSIXct("2021-06-23"), as.POSIXct("2021-11-01"), by = "7 days")
+## 2022
+idok <- seq(as.POSIXct("2022-05-06"), as.POSIXct("2022-06-17"), by = "7 days")
+
+for(tti in 1:(length(idok)-1)) {
+    starttime <- idok[tti]
+    endtime <- idok[tti + 1]
+    timewindow <- paste(starttime - 10*60, endtime  + 10*60, sep = "/")
+    aktfilename <- paste(starttime, endtime, sep = "_")
+    oh.w <- White(ohat1.xts[timewindow])
+    ## pdf(file = paste0(aktfilename, ".pdf"), width = 16/2.54, height = 8/2.54)
+    ## jpeg(file = paste0(aktfilename, ".jpg"), width = 16, height = 8, unit = "cm", res=300)
+    png(file = paste0("Ohat1/",aktfilename, ".png"), width = 16, height = 8, unit = "cm", res=300)
+    plot.White(oh.w)
+    timeaxtics <- seq(starttime, endtime + 24*60*60, by = "day")
+    axis(1, at = timeaxtics, lab = FALSE)
+    axis.POSIXct(1, at = seq(starttime, endtime, by = "day") + 12*60*60, tcl = 0, cex.axis = 0.8)
+    dev.off()
+}
+
+## S_{y0} 0.134
+## 2021
+oh.w <- White(ohat1.xts['2021-06-23 23:50:00/2021-11-01'], Sy = 0.067)
+write.zoo(oh.w$result, "Ohat1/Ohat1.csv", sep = ";", dec = ",")
+
+## 2022
+oh.w <- White(ohat1.xts['2022-05-05 23:50:00/2022-06-15'], Sy = 0.067)
+write.zoo(oh.w$result, "Ohat1/Ohat1_2022.csv", sep = ";", dec = ",")
+
