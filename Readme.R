@@ -1,3 +1,4 @@
+Sys.setenv(TZ = "UTC")
 ## https://github.com/kaliczp/smartbe függvényét használva
 
 ## Beolvasás
@@ -82,3 +83,10 @@ write.zoo(oh.w$result, "Ohat1/Ohat1.csv", sep = ";", dec = ",")
 oh.w <- White(ohat1.xts['2022-05-05 23:50:00/2022-06-15'], Sy = 0.067)
 write.zoo(oh.w$result, "Ohat1/Ohat1_2022.csv", sep = ";", dec = ",")
 
+## Amplitúdók
+daily.max <- apply.daily(ohat1.xts, max)
+daily.min <- apply.daily(ohat1.xts, min)
+daily.amp <- daily.max - daily.min
+daily.amp <- daily.amp[-length(daily.amp)]
+daily.amp.date <- xts(coredata(daily.amp), as.Date(index(daily.amp)))
+write.zoo(daily.amp.date, "Ohat1/ampli.csv", sep = ";", dec = ",")
