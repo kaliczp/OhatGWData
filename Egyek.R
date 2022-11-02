@@ -11,4 +11,7 @@ for(tti in 2:length(csapfilenames)) {
 csap <- csap[!duplicated(csap$date),]
 ## Idősor
 csap.xts <- xts(csap$value, as.POSIXct(csap$date))
-napi.csap <- apply.daily(csap.xts, sum)
+napi.csap <- apply.daily(csap.xts, function(x){sum(x, na.rm = TRUE)})
+havi.csap <- apply.monthly(csap.xts, function(x){sum(x, na.rm = TRUE)})
+write.zoo(napi.csap, "Egyek/csap.csv", sep = ";", dec = ",")
+write.zoo(havi.csap, "Egyek/havicsap.csv", sep = ";", dec = ",")
