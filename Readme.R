@@ -90,3 +90,8 @@ daily.amp <- daily.max - daily.min
 daily.amp <- daily.amp[-length(daily.amp)]
 daily.amp.date <- xts(coredata(daily.amp), as.Date(index(daily.amp)))
 write.zoo(daily.amp.date, "Ohat1/ampli.csv", sep = ";", dec = ",")
+
+## Daily average
+daily.mean <- apply.daily(ohat1.xts, mean)
+daily.mean.date <- xts(coredata(daily.mean), as.Date(index(daily.mean)))
+write.zoo(daily.mean.date, "Ohat1/mean.csv", sep = ";", dec = ",")
