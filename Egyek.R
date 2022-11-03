@@ -36,8 +36,8 @@ para <- para[!duplicated(para$date),]
 hom.xts <- xts(hom$value, as.POSIXct(hom$date))
 para.xts <- xts(para$value, as.POSIXct(para$date))
 ## Napi és havi átlag
-napi.hom <- apply.daily(hom.xts, mean)
-havi.hom <- apply.monthly(hom.xts, mean)
+napi.hom <- apply.daily(hom.xts, function(x){mean(x, na.rm = TRUE)})
+havi.hom <- apply.monthly(hom.xts, function(x){mean(x, na.rm = TRUE)})
 write.zoo(napi.hom, "Egyek/hom.csv", sep = ";", dec = ",")
 write.zoo(havi.hom, "Egyek/havihom.csv", sep = ";", dec = ",")
 napi.para <- apply.daily(para.xts, mean)
