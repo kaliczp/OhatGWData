@@ -57,6 +57,9 @@ oh.w <- White(ohat1.xts['2021-07-01 23:50:00/2021-07-15'], Sy = 0.134)
 idok <- seq(as.POSIXct("2021-06-23"), as.POSIXct("2021-11-01"), by = "7 days")
 ## 2022
 idok <- seq(as.POSIXct("2022-05-06"), as.POSIXct("2022-06-17"), by = "7 days")
+## 2022 második
+idok <- seq(as.POSIXct("2022-06-25"), as.POSIXct("2022-08-05"), by = "7 days")
+
 
 for(tti in 1:(length(idok)-1)) {
     starttime <- idok[tti]
@@ -77,15 +80,15 @@ for(tti in 1:(length(idok)-1)) {
 ## S_{y0} 0.134 Meyboom default 0.5
 ## 2021
 oh2021.w <- White(ohat1.xts['2021-06-23 23:50:00/2021-11-01'], Sy = 0.134, Meyboom = 0.5)
-write.zoo(oh.2021$result, "Ohat1/Ohat1.csv", sep = ";", dec = ",")
+write.zoo(oh2021.w$result, "Ohat1/Ohat1.csv", sep = ";", dec = ",")
 
 ## 2022
 oh2022.w <- White(ohat1.xts['2022-05-05 23:50:00/2022-06-15'], Sy = 0.134)
 write.zoo(oh2022.w$result, "Ohat1/Ohat1_2022.csv", sep = ";", dec = ",")
 
 ## 2022 második
-oh.w <- White(ohat1.xts['2022-06-26 23:50:00/2022-08-04'], Sy = 0.134)
-write.zoo(oh.w$result, "Ohat1/Ohat1_2022_2.csv", sep = ";", dec = ",")
+oh2022_2.w <- White(ohat1.xts['2022-06-26 23:50:00/2022-08-04'], Sy = 0.134)
+write.zoo(oh2022_2.w$result, "Ohat1/Ohat1_2022_2.csv", sep = ";", dec = ",")
 
 
 ## Amplitúdók
