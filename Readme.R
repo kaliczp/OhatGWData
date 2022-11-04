@@ -1,4 +1,4 @@
-Sys.setenv(TZ = "UTC")
+.First  <- function(){Sys.setenv(TZ = "UTC"); require("xts")}
 ## https://github.com/kaliczp/smartbe függvényét használva
 
 ## Beolvasás
