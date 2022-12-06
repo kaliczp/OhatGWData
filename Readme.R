@@ -99,6 +99,10 @@ write.zoo(oh2022.w$result, "Ohat1/Ohat1_2022.csv", sep = ";", dec = ",")
 ## 2022 második
 oh2022_2.w <- White(ohat1.xts['2022-06-26 23:50:00/2022-08-04'], Sy = 0.134)
 write.zoo(oh2022_2.w$result, "Ohat1/Ohat1_2022_2.csv", sep = ";", dec = ",")
+y
+## 2022 második
+oh2022_3.w <- White(ohat1.xts['2022-09-23 23:50:00/2022-10-20'], Sy = 0.134)
+write.zoo(oh2022_3.w$result, "Ohat1/Ohat1_2022_3.csv", sep = ";", dec = ",")
 
 
 ## Amplitúdók
