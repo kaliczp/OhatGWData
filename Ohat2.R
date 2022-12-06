@@ -33,3 +33,33 @@ ohat2jav.xts['2021-11-27 11:30'] <- NA
 -4.554 + 4.569
 ohat2jav.xts['/2021-11-27 08:00'] <- ohat2jav.xts['/2021-11-27 08:00'] + 0.015
 plot(ohat2jav.xts)
+
+pdf(file = "Ohat2/Ohat2full.pdf", width = 100/2.54, height = 30/2.54)
+par(mar = c(3.1, 3.1, 0.2, 0.2), mgp = c(2,1,0))
+plot.zoo(ohat2jav.xts, xaxt = "n", xlab ="", ylab = "h [m]", lwd = 2, xaxs = "i")
+timeaxtics <- seq(as.POSIXct("2021-11-01"), as.POSIXct("2022-10-21") , by = "month")
+axis(1, at = timeaxtics, labels = FALSE)
+axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
+dev.off()
+
+
+## Kiürül
+plot(ohat2jav.xts['2022-06-24/2022-06-26'])
+## Mi ment le?
+plot(ohat2jav.xts['2022-07-25/2022-08-03'])
+
+pdf(file = "Ohat2/Ohat2erdekes.pdf", width = 100/2.54, height = 30/2.54)
+par(mar = c(3.1, 3.1, 0.2, 0.2), mgp = c(2,1,0))
+plot.zoo(ohat2jav.xts['2022-06-22/2022-09-30'], xaxt = "n", xlab ="", ylab = "h [m]", lwd = 2, xaxs = "i")
+timeaxtics <- seq(as.POSIXct("2021-07-01"), as.POSIXct("2022-10-02") , by = "month")
+axis(1, at = timeaxtics, labels = FALSE)
+axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
+dev.off()
+
+jpeg(file = "Ohat2/Ohat2full.jpg", width = 16, height = 7, unit = "cm", pointsize = 10, res = 300)
+par(mar = c(2.1, 3.6, 0.1, 0.1), mgp = c(2.5,1,0), las = 1)
+plot.zoo(ohat2jav.xts, xaxt = "n", xlab ="", ylab = "h [m]", lwd = 1, xaxs = "i")
+timeaxtics <- seq(as.POSIXct("2021-11-01"), as.POSIXct("2022-10-21") , by = "month")
+axis(1, at = timeaxtics, labels = FALSE)
+axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
+dev.off()
