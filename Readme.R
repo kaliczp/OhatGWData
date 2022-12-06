@@ -73,7 +73,8 @@ idok <- seq(as.POSIXct("2022-06-25"), as.POSIXct("2022-08-05"), by = "7 days")
 for(tti in 1:(length(idok)-1)) {
     starttime <- idok[tti]
     endtime <- idok[tti + 1]
-    timewindow <- paste(starttime - 10*60, endtime  + 10*60, sep = "/")
+    endtime.calc <- idok[tti + 1] + 24 * 60 * 60
+    timewindow <- paste(starttime - 10*60, endtime.calc, sep = "/")
     aktfilename <- paste(starttime, endtime, sep = "_")
     oh.w <- White(ohat1.xts[timewindow], Sy = 0.134)
     ## pdf(file = paste0(aktfilename, ".pdf"), width = 16/2.54, height = 8/2.54)
@@ -104,7 +105,7 @@ write.zoo(oh2022_2.w$result, "Ohat1/Ohat1_2022_2.csv", sep = ";", dec = ",")
 daily.max <- apply.daily(ohat1.xts, max)
 daily.min <- apply.daily(ohat1.xts, min)
 daily.amp <- daily.max - daily.min
-daily.amp <- daily.amp[-length(daily.amp)]
+daily.amp <- round(daily.amp[-length(daily.amp)],4)
 daily.amp.date <- xts(coredata(daily.amp), as.Date(index(daily.amp)))
 write.zoo(daily.amp.date, "Ohat1/ampli.csv", sep = ";", dec = ",")
 
