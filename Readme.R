@@ -47,6 +47,15 @@ axis(1, at = timeaxtics, labels = FALSE)
 axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
 dev.off()
 
+jpeg(file = "Ohat1/Ohatfull.jpg", width = 16, height = 7, unit = "cm", pointsize = 10, res = 300)
+par(mar = c(2.1, 3.6, 0.1, 0.1), mgp = c(2.5,1,0), las = 1)
+plot.zoo(ohat1.xts, xaxt = "n", xlab ="", ylab = "h [m]", lwd = 1, xaxs = "i")
+timeaxtics <- seq(as.POSIXct("2021-07-01"), as.POSIXct("2022-10-21") , by = "month")
+axis(1, at = timeaxtics, labels = FALSE)
+axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
+dev.off()
+
+
 ## Export full time-series
 write.zoo(ohat1.xts, "Ohat1/Ohat1xts.csv", sep = ";", dec = ",")
 
