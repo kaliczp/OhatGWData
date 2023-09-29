@@ -35,6 +35,9 @@ ohat2jav.xts['2021-12-28 12:30/2021-12-29'] <- NA
 ohat2jav.xts['2021-11-27 11:30'] <- NA
 -4.554 + 4.569
 ohat2jav.xts['/2021-11-27 08:00'] <- ohat2jav.xts['/2021-11-27 08:00'] + 0.015
+ohat2jav.xts['2022-10-21 10:10/2022-10-21 10:20'] <- NA
+ohat2jav.xts['2022-12-21 13:40/2022-12-21 13:50'] <- NA # Eltolódik megnézni!
+ohat2jav.xts['2023-06-24 12:30/2023-06-24 12:40'] <- NA
 plot(ohat2jav.xts)
 
 pdf(file = "Ohat2/Ohat2full.pdf", width = 100/2.54, height = 30/2.54)
