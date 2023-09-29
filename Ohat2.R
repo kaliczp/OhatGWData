@@ -42,10 +42,14 @@ plot(ohat2jav.xts)
 
 pdf(file = "Ohat2/Ohat2full.pdf", width = 100/2.54, height = 30/2.54)
 par(mar = c(3.1, 3.1, 0.2, 0.2), mgp = c(2,1,0))
-plot.zoo(ohat2jav.xts, xaxt = "n", xlab ="", ylab = "h [m]", lwd = 2, xaxs = "i")
-timeaxtics <- seq(as.POSIXct("2021-11-01"), as.POSIXct("2022-10-21") , by = "month")
+plot.zoo(ohat2jav.xts, xaxt = "n", xlab ="", ylab = "h [m]", lwd = 2, xaxs = "i", type = "n")
+timeaxtics <- seq(as.POSIXct("2021-11-01"), as.POSIXct("2023-09-01") , by = "month")
 axis(1, at = timeaxtics, labels = FALSE)
 axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
+axis(1, at = timeaxtics, labels = FALSE)
+text(as.POSIXct(as.Date(c("2021-11-20", "2022-06-30", "2023-06-01"))),-5, 2021:2023, cex = 4, col = "gray")
+text(as.POSIXct(as.Date("2021-12-01")),-3.95, "Ohat2", cex = 4, col = "gray")
+lines(as.zoo(ohat2jav.xts), lwd = 2)
 dev.off()
 
 
