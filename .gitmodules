@@ -1,3 +1,6 @@
 [submodule "Whitexts"]
 	path = Whitexts
 	url = https://github.com/kaliczp/Whitexts
+[submodule "smartbe"]
+	path = smartbe
+	url = https://github.com/kaliczp/smartbe
