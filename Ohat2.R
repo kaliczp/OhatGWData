@@ -47,9 +47,12 @@ timeaxtics <- seq(as.POSIXct("2021-11-01"), as.POSIXct("2023-09-01") , by = "mon
 axis(1, at = timeaxtics, labels = FALSE)
 axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
 axis(1, at = timeaxtics, labels = FALSE)
-text(as.POSIXct(as.Date(c("2021-11-20", "2022-06-30", "2023-06-01"))),-5, 2021:2023, cex = 4, col = "gray")
+timeyears <- as.Date(paste(2021:2023, "01-01", sep = "-"))
+axis(1, as.POSIXct(timeyears), tck = 1, lab = F, col = "lightgray")
+text(as.POSIXct(timeyears  + c(320, 180, 150)), -5, 2021:2023, cex = 4, col = "gray")
 text(as.POSIXct(as.Date("2021-12-01")),-3.95, "Ohat2", cex = 4, col = "gray")
 lines(as.zoo(ohat2jav.xts), lwd = 2)
+box()
 dev.off()
 
 
