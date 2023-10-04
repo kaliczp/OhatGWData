@@ -60,6 +60,8 @@ dev.off()
 plot(ohat2jav.xts['2022-06-24/2022-06-26'])
 ## Mi ment le?
 plot(ohat2jav.xts['2022-07-25/2022-08-03'])
+plot(ohat2jav.xts['2023-07-12/2023-07-14'])
+plot(ohat2jav.xts['2023-07-24/2023-07-26'])
 
 pdf(file = "Ohat2/Ohat2erdekes.pdf", width = 100/2.54, height = 30/2.54)
 par(mar = c(3.1, 3.1, 0.2, 0.2), mgp = c(2,1,0))
