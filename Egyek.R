@@ -43,3 +43,17 @@ napi.para <- apply.daily(para.xts, function(x){mean(x, na.rm = TRUE)})
 havi.para <- apply.monthly(para.xts, function(x){mean(x, na.rm = TRUE)})
 write.zoo(napi.para, "Egyek/para.csv", sep = ";", dec = ",")
 write.zoo(havi.para, "Egyek/havipara.csv", sep = ";", dec = ",")
+
+## A maradék egybe fájlok
+egybefilenames <- dir("Egyek", patt = "txt")
+ttraw <- read.csv2(paste0("Egyek/", egybefilenames[1]))
+## Hőmérséklet
+hom <- ttraw[ttraw$parameter == "Levegőhőmérséklet",]
+## Csapadék
+csap <- ttraw[ttraw$parameter == "Csapadek60",]
+## Az összes fájlra
+for(tti in 2:length(egybefilenames)) {
+ttraw <- read.csv2(paste0("Egyek/", egybefilenames[tti]))
+hom <- rbind(hom, ttraw[ttraw$parameter == "Levegőhőmérséklet",])
+csap <- rbind(csap, ttraw[ttraw$parameter == "Csapadek60",])
+}
