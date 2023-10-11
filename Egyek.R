@@ -57,3 +57,13 @@ ttraw <- read.csv2(paste0("Egyek/", egybefilenames[tti]))
 hom <- rbind(hom, ttraw[ttraw$parameter == "Levegőhőmérséklet",])
 csap <- rbind(csap, ttraw[ttraw$parameter == "Csapadek60",])
 }
+
+## Adathiányok törlése ELLENŐRIZNI, hogy mi ment ki!
+csap[!is.na(csap$value),]
+## Dupla dátum kiszedése
+hom <- hom[!duplicated(hom$date),]
+csap <- csap[!duplicated(csap$date),]
+
+## Idősor
+hom.xts <- xts(hom$value, as.POSIXct(hom$date))
+csap.xts <- xts(csap$value, as.POSIXct(csap$date))
