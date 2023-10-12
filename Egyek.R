@@ -59,11 +59,22 @@ csap <- rbind(csap, ttraw[ttraw$parameter == "Csapadek60",])
 }
 
 ## Adathiányok törlése ELLENŐRIZNI, hogy mi ment ki!
-csap[!is.na(csap$value),]
+csap <- csap[!is.na(csap$value),]
+hom[!is.na(hom$value),]
 ## Dupla dátum kiszedése
 hom <- hom[!duplicated(hom$date),]
 csap <- csap[!duplicated(csap$date),]
 
 ## Idősor
 hom.xts <- xts(hom$value, as.POSIXct(hom$date))
-csap.xts <- xts(csap$value, as.POSIXct(csap$date))
+csapuj.xts <- xts(csap$value, as.POSIXct(csap$date))
+csapall.xts <- c(csap.xts["/2022-10-30"], csapuj.xts["2022-10-31/"])
+
+##Csapadékgörbék
+plot(csap.xts)
+
+napi.csap <- apply.daily(csapall.xts, function(x){sum(x, na.rm = TRUE)})
+havi.csap <- apply.monthly(csapall.xts, function(x){sum(x, na.rm = TRUE)})
+write.zoo(napi.csap, "Egyek/csap.csv", sep = ";", dec = ",")
+write.zoo(havi.csap, "Egyek/havicsap.csv", sep = ";", dec = ",")
+plot(havi.csap, type="h")
