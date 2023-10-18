@@ -71,7 +71,7 @@ csapuj.xts <- xts(csap$value, as.POSIXct(csap$date))
 csapall.xts <- c(csap.xts["/2022-10-30"], csapuj.xts["2022-10-31/"])
 
 ##Csapadékgörbék
-plot(csap.xts)
+plot(csapall.xts)
 
 napi.csap <- apply.daily(csapall.xts, function(x){sum(x, na.rm = TRUE)})
 havi.csap <- apply.monthly(csapall.xts, function(x){sum(x, na.rm = TRUE)})
