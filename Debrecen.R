@@ -12,3 +12,4 @@ DebrecenCs.xts <- c(DebrecenCs.xts,
                         seq.Date(as.Date("2023-01-01"), as.Date("2023-08-31"), "1 day")
                         )
                     )
+plot(DebrecenCs.xts)
