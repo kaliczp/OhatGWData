@@ -13,3 +13,10 @@ DebrecenCs.xts <- c(DebrecenCs.xts,
                         )
                     )
 plot(DebrecenCs.xts)
+
+## Monthly sum
+DebrCsmonth.xts <- apply.monthly(DebrecenCs.xts, sum)
+plot(DebrCsmonth.xts, type = "h")
+## Yearly sum
+DebrCsmonth.xts <- apply.yearly(DebrecenCs.xts, sum)
+plot(DebrCsmonth.xts, type = "h", ylim = c(0, 1000), color = "blue", lwd = 2, lend = 2)
