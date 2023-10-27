@@ -85,3 +85,4 @@ napi.csap.Date <- xts(coredata(napi.csap), as.Date(index(napi.csap)))
 EgyekCsweek.xts <- period.apply(napi.csap.Date, endpoints(napi.csap.Date, "weeks"), sum)
 
 write.zoo(cbind(DerCsweek.xts,EgyekCsweek.xts), "Egyek/DebrEgyekHeti.csv", sep = ";", dec = ",")
+plot(DerCsweek.xts - EgyekCsweek.xts)
