@@ -1,5 +1,6 @@
 .First  <- function(){Sys.setenv(TZ = "UTC"); require("xts")}
 Sys.setenv(TZ = "UTC")
+library(xts)
 ## https://github.com/kaliczp/smartbe függvényét használva
 
 ## Beolvasás

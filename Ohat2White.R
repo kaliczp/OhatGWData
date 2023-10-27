@@ -5,3 +5,6 @@ plot.White(oh2.w)
 timeaxtics <- seq(starttime, endtime + 24*60*60, by = "day")
 
 ## Talán a plot van eggyel eltolva? csak a meredekség?
+
+## eredmény tábla
+oh2.w$result
