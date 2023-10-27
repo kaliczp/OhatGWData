@@ -78,3 +78,10 @@ havi.csap <- apply.monthly(csapall.xts, function(x){sum(x, na.rm = TRUE)})
 write.zoo(napi.csap, "Egyek/csap.csv", sep = ";", dec = ",")
 write.zoo(havi.csap, "Egyek/havicsap.csv", sep = ";", dec = ",")
 plot(havi.csap, type="h")
+
+
+## Weekly sum
+napi.csap.Date <- xts(coredata(napi.csap), as.Date(index(napi.csap)))
+EgyekCsweek.xts <- period.apply(napi.csap.Date, endpoints(napi.csap.Date, "weeks"), sum)
+
+write.zoo(cbind(DerCsweek.xts,EgyekCsweek.xts), "Egyek/DebrEgyekHeti.csv", sep = ";", dec = ",")

@@ -20,3 +20,6 @@ plot(DebrCsmonth.xts, type = "h", ylim = c(0, 250), col = "blue", lwd = 2, lend 
 ## Yearly sum
 DebrCsyear.xts <- apply.yearly(DebrecenCs.xts["/2022"], sum)
 plot(DebrCsyear.xts, type = "h", ylim = c(0, 1000), col = "blue", lwd = 2, lend = 2)
+
+## Weekly sum
+DerCsweek.xts <- period.apply(DebrecenCs.xts['2020-08-30/2023-09-01'], endpoints(DebrecenCs.xts['2020-08-30/2023-09-01'], "weeks"), sum)
