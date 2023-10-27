@@ -1,6 +1,5 @@
-library(readxl)
-csapsel <- as.data.frame(read_excel("Egyek/csapössz.xlsx", 1))
-csapsel.xts <- xts(csapsel[,4], csapsel[,1])
+csapsel <- read.csv2("Egyek/csapössz.csv")
+csapsel.xts <- xts(csapsel[,4], as.Date(csapsel[,1], format = "%Y.%m.%d"))
 
 oh2rech.w <- White(ohat2jav.xts['2022-04-14 23:50:00/2023-08-31'], Sy = 0.134)
 
