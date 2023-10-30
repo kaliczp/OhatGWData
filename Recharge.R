@@ -44,3 +44,9 @@ for(intervallum in intervallumok[-1]){
 }
 
 plot(slope.xts, type ="p")
+
+slopeSummer.xts <- slope.xts['2022-05-01/2022-08-31']
+slopeSummer.xts <- c(slopeSummer.xts, slope.xts['2023-05-01/2023-08-31'])
+plot(slopeSummer.xts, type ="p")
+
+slopeSummer.xts[slopeSummer.xts < 0]
