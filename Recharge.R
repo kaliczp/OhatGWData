@@ -10,7 +10,7 @@ intervallum <- '2022-11-01/2022-12-20'
 intervallum <- '2022-05-01/2022-06-24'
 intervallum <- '2022-06-26/2022-08-31'
 ## '2021-11-01/2022-02-28' adathiányig
-intervallum <- '2021-11-01/2021-11-26'
+## intervallum <- '2021-11-01/2021-11-26' négy óránként
 intervallum <- '2021-11-30/2021-12-27'
 
 oh2rech.w <- White(ohat2jav.xts[intervallum], Sy = 0.134)
@@ -27,7 +27,6 @@ intervallumok <- c('2023-06-25/2023-08-31'
 ,'2022-05-01/2022-06-24'
 ,'2022-06-26/2022-08-31'
 ## '2021-11-01/2022-02-28' adathiányig
-,'2021-11-01/2021-11-26'
 ,'2021-11-30/2021-12-27'
 )
 
@@ -42,3 +41,5 @@ for(intervallum in intervallumok[-1]){
     select <- !coredata(csapsel.xts[intervallum])[,1]
     slope.xts <- c(slope.xts, oh2.slope[select])
 }
+
+plot(slope.xts, type ="p")
