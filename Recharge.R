@@ -50,3 +50,20 @@ slopeSummer.xts <- c(slopeSummer.xts, slope.xts['2023-05-01/2023-08-31'])
 plot(slopeSummer.xts[,1], type ="p")
 
 slopeSummer.xts[slopeSummer.xts[,1] < 0, 1]
+
+write.zoo(slopeSummer.xts, "NyáriMeredekségAdatok.csv", sep = ";", dec = ",")
+
+## Negítív törlése
+slopeSummer.xts[slopeSummer.xts[,1] < 0, 1] <- NA
+
+
+slopeonlyDate.xts <- xts(coredata(slopeSummer.xts[,1]), as.Date(index(slopeSummer.xts[,1])))
+slopeDatnona2022 <- slopeonlyDate.xts['2022']
+slopeDatnona2022 <- slopeDatnona2022[!is.na(slopeDatnona2022)]
+
+plot(as.numeric(index(slopeDatnona2022)),
+     coredata(slopeDatnona2022)[,1])
+lines(lowess(as.numeric(index(slopeDatnona2022)),
+             coredata(slopeDatnona2022)[,1],
+             f = 1/4) # Simítás
+      )
