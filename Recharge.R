@@ -35,6 +35,7 @@ oh2.slope <- oh2rech.w$results[,1]
 select <- !coredata(csapsel.xts[intervallumok[1]])[,1]
 slope.xts <- oh2.slope[select]
 
+##Lefuttatja, és összefűzi
 for(intervallum in intervallumok[-1]){ 
     oh2rech.w <- White(ohat2jav.xts[intervallum], Sy = 0.134)
     oh2.slope <- oh2rech.w$results[,1]
