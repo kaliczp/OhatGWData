@@ -32,21 +32,21 @@ intervallumok <- c('2023-06-25/2023-08-31'
 
 oh2rech.w <- White(ohat2jav.xts[intervallumok[1]], Sy = 0.134, median = FALSE)
 oh2.slope <- oh2rech.w$results[,1]
-select <- !coredata(csapsel.xts[intervallumok[1]])[,1]
+select <- !coredata(csapsel.xts[intervallumok[1]])
 slope.xts <- oh2.slope[select]
 
 ##Lefuttatja, és összefűzi
 for(intervallum in intervallumok[-1]){ 
     oh2rech.w <- White(ohat2jav.xts[intervallum], Sy = 0.134, median = FALSE)
     oh2.slope <- oh2rech.w$results[,1]
-    select <- !coredata(csapsel.xts[intervallum])[,1]
+    select <- !coredata(csapsel.xts[intervallum])
     slope.xts <- c(slope.xts, oh2.slope[select])
 }
 
-plot(slope.xts, type ="p")
+plot(slope.xts[,1], type ="p")
 
 slopeSummer.xts <- slope.xts['2022-05-01/2022-08-31']
 slopeSummer.xts <- c(slopeSummer.xts, slope.xts['2023-05-01/2023-08-31'])
-plot(slopeSummer.xts, type ="p")
+plot(slopeSummer.xts[,1], type ="p")
 
-slopeSummer.xts[slopeSummer.xts < 0]
+slopeSummer.xts[slopeSummer.xts[,1] < 0, 1]
