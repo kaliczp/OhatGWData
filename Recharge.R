@@ -9,7 +9,11 @@ intervallum <- '2022-11-01/2022-12-20'
 ## 2022-05-01/2022-08-31
 intervallum <- '2022-05-01/2022-06-24'
 intervallum <- '2022-06-26/2022-08-31'
-## '2021-11-01/2022-02-28'
+## '2021-11-01/2022-02-28' adathiányig
+intervallum <- '2021-11-01/2021-11-26'
+intervallum <- '2021-11-01/2021-12-2u'
+
+intervallum <- '2021-11-30/2021-12-27'
 
 oh2rech.w <- White(ohat2jav.xts[intervallum], Sy = 0.134)
 plot.White(oh2rech.w)
