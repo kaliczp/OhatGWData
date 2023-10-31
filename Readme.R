@@ -38,6 +38,10 @@ plot(ohat1.xts)
 ## Alulcsordulások adathiánnyá alakítása
 ohat1.xts['2022-06-16 08:40/2022-06-25 09:00'] <- NA
 ohat1.xts['2022-08-05 10:00/2022-09-22 19:30'] <- NA
+ohat1.xts['2022-10-21 08:10/2022-10-21 08:20'] <- NA
+ohat1.xts['2022-08-05 09:50/2022-09-22 19:40'] <- NA
+
+plot(ohat1.xts['2022-10-20/2022-10-21'])
 
 ### Teljes időszak plot vagy png vagy pdf
 png(file = paste0("Ohat1/Ohatfull.png"), width = 15, height = 8, unit = "cm", res=300)
