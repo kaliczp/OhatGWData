@@ -89,3 +89,12 @@ axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format =
 par(mgp = c(2.5, 1.6, 0))
 axis.POSIXct(1, at = as.POSIXct(c("2021-11-15", "2022-06-30", "2023-04-30")), tcl = 0, cex.axis = 0.8, format = "%Y")
 dev.off()
+
+
+## Amplitúdók
+daily.max <- apply.daily(ohat2jav.xts, max)
+daily.min <- apply.daily(ohat2jav.xts, min)
+daily.amp <- daily.max - daily.min
+daily.amp <- round(daily.amp[-length(daily.amp)],4)
+daily.amp.date <- xts(coredata(daily.amp), as.Date(index(daily.amp)))
+write.zoo(daily.amp.date, "Ohat2/ampli.csv", sep = ";", dec = ",")
