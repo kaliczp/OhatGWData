@@ -68,6 +68,16 @@ lines(lowess(as.numeric(index(slopeDatnona2022)),
              f = 1/4) # Simítás
       )
 
+slopeDatnona2023 <- slopeonlyDate.xts['2023']
+slopeDatnona2023 <- slopeDatnona2023[!is.na(slopeDatnona2023)]
+
+plot(as.numeric(index(slopeDatnona2023)),
+     coredata(slopeDatnona2023)[,1])
+lines(lowess(as.numeric(index(slopeDatnona2023)),
+             coredata(slopeDatnona2023)[,1],
+             f = 3/4) # Simítás
+      )
+
 ## 1-es kútra átírni!
 ## Teljes időszak: '2021-06-22 13:00:00/2023-08-31'
 intervallum <- '2023-05-01/2023-06-23'
