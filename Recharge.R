@@ -67,3 +67,22 @@ lines(lowess(as.numeric(index(slopeDatnona2022)),
              coredata(slopeDatnona2022)[,1],
              f = 1/4) # Simítás
       )
+
+## 1-es kútra átírni!
+## Teljes időszak: '2021-06-22 13:00:00/2023-08-31'
+intervallum <- '2023-06-25/2023-08-31'
+intervallum <- '2023-05-01/2023-06-23'
+intervallum <- '2022-12-22/2023-03-01'
+intervallum <- '2022-11-01/2022-12-20'
+## 2022-05-01/2022-08-31
+intervallum <- '2022-05-01/2022-06-24'
+intervallum <- '2022-06-26/2022-08-31'
+## '2021-11-01/2022-02-28' adathiányig
+## intervallum <- '2021-11-01/2021-11-26' négy óránként
+intervallum <- '2021-11-30/2021-12-27'
+
+oh2rech.w <- White(ohat2jav.xts[intervallum], Sy = 0.134)
+plot.White(oh2rech.w)
+oh2.slope <- oh2rech.w$results[,1]
+select <- !coredata(csapsel.xts[intervallum])[,1]
+oh2.slope[select]
