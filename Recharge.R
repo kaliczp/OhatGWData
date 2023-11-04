@@ -65,8 +65,9 @@ slope2022.low <- lowess(as.numeric(index(slopeDatnona2022)),
                         coredata(slopeDatnona2022)[,1],
                         f = 1/4) # Simítás
 
-plot(as.numeric(index(slopeDatnona2022)),
-     coredata(slopeDatnona2022)[,1])
+plot(index(slopeDatnona2022)  ,
+     coredata(slopeDatnona2022)[,1],
+     xlab = "", ylab = "Recharge")
 lines(slope2022.low
       )
 
@@ -77,8 +78,9 @@ slope2023.low <- lowess(as.numeric(index(slopeDatnona2023)),
                         coredata(slopeDatnona2023)[,1],
                         f = 3/4) # Simítás
 
-plot(as.numeric(index(slopeDatnona2023)),
-     coredata(slopeDatnona2023)[,1])
+plot(index(slopeDatnona2023),
+     coredata(slopeDatnona2023)[,1],
+     xlab = "", ylab = "Recharge")
 lines(slope2023.low
       )
 
