@@ -61,21 +61,25 @@ slopeonlyDate.xts <- xts(coredata(slopeSummer.xts[,1]), as.Date(index(slopeSumme
 slopeDatnona2022 <- slopeonlyDate.xts['2022']
 slopeDatnona2022 <- slopeDatnona2022[!is.na(slopeDatnona2022)]
 
+slope2022.low <- lowess(as.numeric(index(slopeDatnona2022)),
+                        coredata(slopeDatnona2022)[,1],
+                        f = 1/4) # Simítás
+
 plot(as.numeric(index(slopeDatnona2022)),
      coredata(slopeDatnona2022)[,1])
-lines(lowess(as.numeric(index(slopeDatnona2022)),
-             coredata(slopeDatnona2022)[,1],
-             f = 1/4) # Simítás
+lines(slope2022.low
       )
 
 slopeDatnona2023 <- slopeonlyDate.xts['2023']
 slopeDatnona2023 <- slopeDatnona2023[!is.na(slopeDatnona2023)]
 
+slope2023.low <- lowess(as.numeric(index(slopeDatnona2023)),
+                        coredata(slopeDatnona2023)[,1],
+                        f = 3/4) # Simítás
+
 plot(as.numeric(index(slopeDatnona2023)),
      coredata(slopeDatnona2023)[,1])
-lines(lowess(as.numeric(index(slopeDatnona2023)),
-             coredata(slopeDatnona2023)[,1],
-             f = 3/4) # Simítás
+lines(slope2023.low
       )
 
 ## 1-es kútra átírni!
