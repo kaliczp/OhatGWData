@@ -60,29 +60,31 @@ slopeSummer.xts[slopeSummer.xts[,1] < 0, 1] <- NA
 slopeonlyDate.xts <- xts(coredata(slopeSummer.xts[,1]), as.Date(index(slopeSummer.xts[,1])))
 slopeDatnona2022 <- slopeonlyDate.xts['2022']
 slopeDatnona2022 <- slopeDatnona2022[!is.na(slopeDatnona2022)]
+slopeDatnona2022 <- slopeDatnona2022*1000
 
 slope2022.low <- lowess(as.numeric(index(slopeDatnona2022)),
                         coredata(slopeDatnona2022)[,1],
                         f = 1/4) # Simítás
 
 plot(index(slopeDatnona2022),
-     coredata(slopeDatnona2022)[,1],
-     xlab = "", ylab = "Recharge", xaxt ="n")
+     coredata(slopeDatnona2022)[,1], ylim = c (0,3),
+     xlab = "", ylab = "Recharge mm/day", xaxt ="n")
 axis.Date(1, index(slopeDatnona2022), lab = FALSE)
 axis.Date(1, at = as.Date(paste(2022,5:8,15, sep = "-")), format = "%Y-%m", tcl = 0)
 lines(slope2022.low
       )
 
 slopeDatnona2023 <- slopeonlyDate.xts['2023']
-slopeDatnona2023 <- slopeDatnona2023[!is.na(slopeDatnona2023)]
+slopeDatnona2023 <- slopeDatnona2023[!is.na(slopeDatnona2023)]*1000
+
 
 slope2023.low <- lowess(as.numeric(index(slopeDatnona2023)),
                         coredata(slopeDatnona2023)[,1],
                         f = 3/4) # Simítás
 
 plot(index(slopeDatnona2023),
-     coredata(slopeDatnona2023)[,1],
-     xlab = "", ylab = "Recharge", xaxt ="n")
+     coredata(slopeDatnona2023)[,1], ylim = c (0,3),
+     xlab = "", ylab = "Recharge mm/day", xaxt ="n")
 axis.Date(1, index(slopeDatnona2023), lab = FALSE)
 axis.Date(1, at = as.Date(paste(2023,5:8,15, sep = "-")), format = "%Y-%m", tcl = 0)
 lines(slope2023.low
