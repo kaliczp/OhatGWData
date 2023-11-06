@@ -19,9 +19,17 @@ ohat122625mod$Measure <- ohat122625mod$Measure + 0.145
 ohat122a21 <- smartbe("2022/Ohat1a21.TXT")
 ohat122a21mod <- ohat122a21
 ohat122a21mod$Measure  <- ohat122a21mod$Measure + 0.46
+ohat122c21 <- smartbe("2022/Ohat1c21.TXT")
+## 5.345-4.88 = 0.465
+ohat122c21mod <- ohat122c21
+ohat122c21mod$Measure <- ohat122c21mod$Measure + 0.465
 ohat123624 <- smartbe("2023/Ohat1624.TXT")
+ohat123624mod <- ohat123624
+ohat123624mod$Measure <- ohat123624mod$Measure + 0.465
 ohat123901 <- smartbe("2023/Ohat1901.TXT")
-ohat1 <- rbind(ohat121a09, ohat121b27,ohat121c28,ohat122414mod,ohat122625mod, ohat122a21mod, ohat123624, ohat123901)
+ohat123901mod <- ohat123901
+ohat123901mod$Measure <- ohat123901mod$Measure + 0.465
+ohat1 <- rbind(ohat121a09, ohat121b27,ohat121c28,ohat122414mod,ohat122625mod, ohat122a21mod, ohat122c21mod, ohat123624mod, ohat123901mod)
 plot(ohat1$Measure, type = "l")
 
 ## Időbélyeg készítés
