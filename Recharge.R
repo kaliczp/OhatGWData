@@ -87,7 +87,7 @@ plot(index(slopeDatnona2023),
      xlab = "", ylab = "Recharge mm/day", xaxt ="n")
 axis.Date(1, index(slopeDatnona2023), lab = FALSE)
 axis.Date(1, at = as.Date(paste(2023,5:8,15, sep = "-")), format = "%Y-%m", tcl = 0)
-lines(slope2023.low
+lines(slope2023.low, lwd = 2, col = "#FF1111"
       )
 
 ## 1-es kútra átírni!
