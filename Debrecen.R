@@ -23,3 +23,6 @@ plot(DebrCsyear.xts, type = "h", ylim = c(0, 1000), col = "blue", lwd = 2, lend 
 
 ## Weekly sum
 DerCsweek.xts <- period.apply(DebrecenCs.xts['2020-08-30/2023-09-01'], endpoints(DebrecenCs.xts['2020-08-30/2023-09-01'], "weeks"), sum)
+
+DebrYearliAve <- mean(DebrCsyear.xts)
+DerbCscumsum <- cumsum(DebrCsyear.xts - DebrYearliAve)
