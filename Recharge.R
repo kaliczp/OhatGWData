@@ -71,7 +71,7 @@ plot(index(slopeDatnona2022),
      xlab = "", ylab = "Recharge mm/day", xaxt ="n")
 axis.Date(1, index(slopeDatnona2022), lab = FALSE)
 axis.Date(1, at = as.Date(paste(2022,5:8,15, sep = "-")), format = "%Y-%m", tcl = 0)
-lines(slope2022.low
+lines(slope2022.low, lwd = 2, col = "#FF1111"
       )
 
 slopeDatnona2023 <- slopeonlyDate.xts['2023']
