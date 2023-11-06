@@ -26,3 +26,15 @@ DerCsweek.xts <- period.apply(DebrecenCs.xts['2020-08-30/2023-09-01'], endpoints
 
 DebrYearliAve <- mean(DebrCsyear.xts)
 DerbCscumsum <- cumsum(DebrCsyear.xts - DebrYearliAve)
+
+
+## Temperature
+DebrTemp <- read.csv2("Debrecen/t_h_Debrecen_19012021.csv")
+DebrTemp.xts <- xts(as.numeric(DebrTemp[,2]),
+                    seq.Date(as.Date("1901-01-01"), as.Date("2021-12-31"), "1 day"))
+
+DebrTempYear <- apply.yearly(DebrTemp.xts,mean)
+
+DebrTempMean <- mean(DebrTempYear)
+DerbTcumsum <- cumsum(DebrTempYear - DebrTempMean)
+plot(DerbTcumsum)
