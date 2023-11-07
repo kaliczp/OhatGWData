@@ -68,7 +68,7 @@ slope2022.low <- lowess(as.numeric(index(slopeDatnona2022)),
 
 plot(index(slopeDatnona2022),
      coredata(slopeDatnona2022)[,1], ylim = c (0,3),
-     xlab = "", ylab = "Recharge mm/day", xaxt ="n")
+     xlab = "", ylab = "Visszatöltődés mm/nap", xaxt ="n")
 axis.Date(1, index(slopeDatnona2022), lab = FALSE)
 axis.Date(1, at = as.Date(paste(2022,5:8,15, sep = "-")), format = "%Y-%m", tcl = 0)
 lines(slope2022.low, lwd = 2, col = "#FF1111"
@@ -84,7 +84,7 @@ slope2023.low <- lowess(as.numeric(index(slopeDatnona2023)),
 
 plot(index(slopeDatnona2023),
      coredata(slopeDatnona2023)[,1], ylim = c (0,3),
-     xlab = "", ylab = "Recharge mm/day", xaxt ="n")
+     xlab = "", ylab = "Visszatöltődés mm/nap", xaxt ="n")
 axis.Date(1, index(slopeDatnona2023), lab = FALSE)
 axis.Date(1, at = as.Date(paste(2023,5:8,15, sep = "-")), format = "%Y-%m", tcl = 0)
 lines(slope2023.low, lwd = 2, col = "#FF1111"
@@ -109,3 +109,13 @@ plot.White(oh1rech.w)
 oh2.slope <- oh2rech.w$results[,1]
 select <- !coredata(csapsel.xts[intervallum])[,1]
 oh2.slope[select]
+
+##Téli visszatöltődés számítás
+oh2Winter2021 <- na.approx(ohat2jav.xts['2021-11/2022-04'])
+plot(oh2Winter2021)
+plot(oh2Winter2021['2021-12-28/2022-04-14'])
+oh2WinterCsak <- oh2Winter2021['2021-12-28 13:00/2022-04-14 10:00']
+
+oh2Winter2021.slope <- as.vector(diff(coredata(oh2WinterCsak))/as.numeric(diff(index(oh2WinterCsak))))
+oh2.20220301 <- oh2Winter2021.slope * as.numeric((as.POSIXct("2022-03-01")-index(oh2WinterCsak)[1]))
+coredata(oh2WinterCsak[1]) - coredata(ohat2jav.xts['2021-11-01 00:00']) + oh2.20220301
