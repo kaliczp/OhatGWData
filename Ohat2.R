@@ -98,3 +98,7 @@ daily.amp <- daily.max - daily.min
 daily.amp <- round(daily.amp[-length(daily.amp)],4)
 daily.amp.date <- xts(coredata(daily.amp), as.Date(index(daily.amp)))
 write.zoo(daily.amp.date, "Ohat2/ampli.csv", sep = ";", dec = ",")
+
+## Napi átlag, kiírása excelbe
+daily.mean.rech <- apply.daily(ohat2jav.xts,mean)
+write.zoo(daily.mean.rech, "Ohat2/Napivízszint.csv", sep = ";", dec = ",")
