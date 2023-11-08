@@ -119,3 +119,5 @@ oh2WinterCsak <- oh2Winter2021['2021-12-28 13:00/2022-04-14 10:00']
 oh2Winter2021.slope <- as.vector(diff(coredata(oh2WinterCsak))/as.numeric(diff(index(oh2WinterCsak))))
 oh2.20220301 <- oh2Winter2021.slope * as.numeric((as.POSIXct("2022-03-01")-index(oh2WinterCsak)[1]))
 coredata(oh2WinterCsak[1]) - coredata(ohat2jav.xts['2021-11-01 00:00']) + oh2.20220301
+
+coredata(ohat2jav.xts['2023-03-01 00:00']) - coredata(ohat2jav.xts['2022-11-01 00:00']) 
