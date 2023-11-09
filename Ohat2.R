@@ -71,7 +71,7 @@ box()
 
 dev.off()
 
-jpeg(file = "Ohat2/Ohat2full2.0.jpg", width = 16, height = 7, unit = "cm", pointsize = 10, res = 300)
+jpeg(file = "Ohat2/Ohat2full2.0.jpg", width = 14.3, height = 7, unit = "cm", pointsize = 10, res = 300)
 
 par(mar = c(3.1, 3.6, 0.6, 0.2), mgp = c(2.5,1,0), las = 1)
 plot.zoo(ohat2jav.xts, xaxt = "n", xlab ="", ylab = "h [m]", xaxs = "i", type = "n")
