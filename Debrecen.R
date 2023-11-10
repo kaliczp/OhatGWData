@@ -83,17 +83,19 @@ DebrHydrTAve <- mean(DebrHydrTemp.xts)
 DebrHydrTcumsum <- cumsum(DebrHydrTemp.xts - DebrHydrTAve)
 plot(DebrHydrTcumsum)
 
-par(mar = c(4.1, 4.1, 1.1, 4.1))
-plot.zoo(DebrHydrTcumsum, col = "red", lwd = 2,
+par(mar = c(4.1, 4.1, 1.1, 4.1), las = 1)
+plot.zoo(DebrHydrTcumsum, type = "n",
          xlab = "", ylab = "Hőmérséklet",
          ylim = c(-25,2),
          xaxs = "i", yaxs = "i", yaxt = "n")
 axis(2, at = 0, tck = 1, col = "red", lty = "dashed")
-axis(2, at = c(-22, -18, -14, -10, -6, -2), tck = 1, lty = "dashed")
+axis(2, at = c(-22, -18, -14, -10, -6, -2), tck = 1, lty = "dashed", col = "lightgray")
+lines(as.zoo(DebrHydrTcumsum), lwd = 2, col = "red")
 par(new = TRUE)
 plot.zoo(DerbHydrCscumsum, col = "blue", lwd = 2,
          xlab = "", ylab = "",
          ylim = c(-150,1200),
          xaxs = "i", yaxs = "i", yaxt = "n")
-axis(4)
+axis(4, at = c(0,200,400,600,800,1000))
 axis(2, at = 0, tck = 1, col = "blue", lty = "dashed", lab = FALSE)
+mtext("Csapadék", side = 4, at = 520, line = 3, las = 0)
