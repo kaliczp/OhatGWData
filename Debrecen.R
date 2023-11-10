@@ -1,5 +1,5 @@
-Debrecen1901_2022 <- read.csv2("Debrecen/r_o_Debrecen_19012022.csv")
-Debrecen2023 <- read.csv2("Debrecen/HABP_1RD_20230101_20230831_64309.csv", skip = 5)
+Debrecen1901_2022 <- read.csv2("Debrecen/r_o_Debrecen_19012022.csv", dec = ".")
+Debrecen2023 <- read.csv2("Debrecen/HABP_1RD_20230101_20230831_64309.csv", dec = ".", skip = 5)
 
 library(xts)
 
@@ -29,7 +29,7 @@ DerbCscumsum <- cumsum(DebrCsyear.xts - DebrYearliAve)
 plot(DerbCscumsum)
 
 ## Temperature
-DebrTemp <- read.csv2("Debrecen/t_h_Debrecen_19012021.csv")
+DebrTemp <- read.csv2("Debrecen/t_h_Debrecen_19012021.csv", dec = ".")
 DebrTemp.xts <- xts(as.numeric(DebrTemp[,2]),
                     seq.Date(as.Date("1901-01-01"), as.Date("2021-12-31"), "1 day"))
 
