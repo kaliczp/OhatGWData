@@ -51,3 +51,49 @@ DebrTempYear <- apply.yearly(DebrTemp.xts,mean)
 DebrTempMean <- mean(DebrTempYear)
 DerbTcumsum <- cumsum(DebrTempYear - DebrTempMean)
 plot(DerbTcumsum)
+
+### Hydrologic year
+## Use vector of November 1st dates to cut data into hydro-years
+breaks <- seq(as.Date("1901-11-01"), as.Date("2023-11-01"), by="year")
+HydroYears <- cut(index(DebrecenCs.xts['1901-11-01/']), breaks, labels=1901:2022)
+
+## Precipitation
+DebrHydrC <- tapply(coredata(DebrecenCs.xts['1901-11-01/']),
+                    HydroYears,
+                    sum
+                    )
+
+DebrHydrC.xts <- xts(DebrHydrC, as.Date(paste0(as.numeric(names(DebrHydrC)) + 1, "-10-31")))
+
+## Temperature
+DebrHydrTemp <- tapply(coredata(DebrTemp.xts['1901-11-01/']),
+                    HydroYears,
+                    mean
+                    )
+
+DebrHydrTemp.xts <- xts(DebrHydrTemp, as.Date(paste0(as.numeric(names(DebrHydrTemp)) + 1, "-10-31")))
+
+## Cumsum HydroYear
+DebrHydrCAve <- mean(DebrHydrC.xts)
+DerbHydrCscumsum <- cumsum(DebrHydrC.xts - DebrHydrCAve)
+plot(DerbHydrCscumsum)
+
+
+DebrHydrTAve <- mean(DebrHydrTemp.xts)
+DebrHydrTcumsum <- cumsum(DebrHydrTemp.xts - DebrHydrTAve)
+plot(DebrHydrTcumsum)
+
+par(mar = c(4.1, 4.1, 1.1, 4.1))
+plot.zoo(DebrHydrTcumsum, col = "red", lwd = 2,
+         xlab = "", ylab = "Hőmérséklet",
+         ylim = c(-25,2),
+         xaxs = "i", yaxs = "i", yaxt = "n")
+axis(2, at = 0, tck = 1, col = "red", lty = "dashed")
+axis(2, at = c(-22, -18, -14, -10, -6, -2), tck = 1, lty = "dashed")
+par(new = TRUE)
+plot.zoo(DerbHydrCscumsum, col = "blue", lwd = 2,
+         xlab = "", ylab = "",
+         ylim = c(-150,1200),
+         xaxs = "i", yaxs = "i", yaxt = "n")
+axis(4)
+axis(2, at = 0, tck = 1, col = "blue", lty = "dashed", lab = FALSE)
