@@ -96,9 +96,9 @@ napielso <- napiutso[-c(1,length(napiutso))] + 1
 napidiff <- diff(ohat2jav.xts[napielso])
 
 list.rech <- list(
-  W2022 = napidiff['2021-11-01/2022-02-28'],
+  W2022 = napidiff['2021-11-01/2022-02-28']*1000*0.134,
   S2022 = slopeDatnona2022,
-  W2023 = napidiff['2022-11-01/2023-02-28'],
+  W2023 = napidiff['2022-11-01/2023-02-28']*1000*0.134,
   S2023 = slopeDatnona2023)
 
 ## Téli nyári boxplot
@@ -107,6 +107,9 @@ axis(1, at = 1:2, lab = c(2022,2023))
 
 ## Csak téli boxplot
 boxplot(list.rech[c("W2022","W2023")])
+
+## Csak nyári boxplot
+boxplot(list.rech[c("S2022","S2023")])
 
 ## 1-es kútra átírni!
 ## Teljes időszak: '2021-06-22 13:00:00/2023-08-31'
