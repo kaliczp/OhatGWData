@@ -95,11 +95,22 @@ napiutso <- endpoints(ohat2jav.xts, on = "days")
 napielso <- napiutso[-c(1,length(napiutso))] + 1
 napidiff <- diff(ohat2jav.xts[napielso])
 
+## Daily recharge data
 list.rech <- list(
   W2022 = napidiff['2021-11-01/2022-02-28']*1000*0.134,
   S2022 = slopeDatnona2022,
   W2023 = napidiff['2022-11-01/2023-02-28']*1000*0.134,
   S2023 = slopeDatnona2023)
+
+## Téli recharge válogatás 2021/2022
+intervallum <- paste(as.character(start(list.rech$W2022)), as.character(end(list.rech$W2022)), sep = "/")
+select <- !coredata(csapsel.xts[intervallum])
+list.rech$W2022 <- list.rech$W2022[select]
+
+## Téli recharge válogatás 2022/2023
+intervallum <- paste(as.character(start(list.rech$W2023)), as.character(end(list.rech$W2023)), sep = "/")
+select <- !coredata(csapsel.xts[intervallum])
+list.rech$W2023 <- list.rech$W2023[select]
 
 ## Téli nyári boxplot
 boxplot(list.rech)
