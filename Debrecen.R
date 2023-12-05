@@ -99,3 +99,19 @@ plot.zoo(DerbHydrCscumsum, col = "blue", lwd = 2,
 axis(4, at = c(0,200,400,600,800,1000))
 axis(2, at = 0, tck = 1, col = "blue", lty = "dashed", lab = FALSE)
 mtext("Csapadék", side = 4, at = 520, line = 3, las = 0)
+
+par(mar = c(4.1, 4.1, 1.1, 4.1), las = 1)
+plot.zoo(DebrHydrTemp.xts, type = "n",
+         xlab = "", ylab = "Hőmérséklet",
+         ylim = c(8,20),
+         xaxs = "i", yaxs = "i", yaxt = "n")
+axis(2, at = 0, tck = 1, col = "red", lty = "dashed")
+axis(2, at = 5:13, tck = 1, lty = "dashed", col = "lightgray")
+lines(as.zoo(DebrHydrTemp.xts), lwd = 2, col = "red")
+par(new = TRUE)
+plot.zoo(DebrHydrC.xts, col = "blue", lwd = 2, type = "h",
+         xlab = "", ylab = "",
+         ylim = c(1200,0),
+         xaxs = "i", yaxs = "i", yaxt = "n")
+axis(4, at = seq(0,1000,200))
+mtext("Csapadék", side = 4, at = 520, line = 3, las = 0)
