@@ -134,3 +134,9 @@ write.zoo(daily.amp.date, "Ohat2/ampli.csv", sep = ";", dec = ",")
 ## Napi átlag, kiírása excelbe
 daily.mean.rech <- apply.daily(ohat2jav.xts,mean)
 write.zoo(daily.mean.rech, "Ohat2/Napivízszint.csv", sep = ";", dec = ",")
+
+## Havi átlag
+monthly.mean <- apply.monthly(ohat2jav.xts['/2023-08'], function(x){mean(x, na.rm = TRUE)})
+monthly.mean.date <- xts(coredata(monthly.mean), as.Date(index(monthly.mean)))
+write.zoo(monthly.mean.date, "Ohat2/MonthlyMean.csv", sep = ";", dec = ",")
+
