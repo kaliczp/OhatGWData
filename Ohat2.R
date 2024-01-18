@@ -138,5 +138,9 @@ write.zoo(daily.mean.rech, "Ohat2/Napivízszint.csv", sep = ";", dec = ",")
 ## Havi átlag
 monthly.mean <- apply.monthly(ohat2jav.xts['/2023-08'], function(x){mean(x, na.rm = TRUE)})
 monthly.mean.date <- xts(coredata(monthly.mean), as.Date(index(monthly.mean)))
-write.zoo(monthly.mean.date, "Ohat2/MonthlyMean.csv", sep = ";", dec = ",")
+potlas <- xts(rep(NA,3),
+              as.Date(paste0('2022-0',2:4,'-01')) - 1)
+monthly.mean.date.jav <- c(monthly.mean.date, potlas)
+monthly.mean.date.jav <- na.approx(monthly.mean.date.jav)
+write.zoo(round(monthly.mean.date.jav,2), "Ohat2/MonthlyMean.csv", sep = ";", dec = ",")
 
