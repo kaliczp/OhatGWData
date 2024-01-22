@@ -157,4 +157,5 @@ write.zoo(daily.mean.date, "Ohat1/mean.csv", sep = ";", dec = ",")
 ## Monthly average
 monthly.mean <- apply.monthly(ohat1.xts['/2023-08'], function(x){mean(x, na.rm = TRUE)})
 monthly.mean.date <- xts(coredata(monthly.mean), as.Date(index(monthly.mean)))
-write.zoo(monthly.mean.date, "Ohat1/MonthlyMean.csv", sep = ";", dec = ",")
+monthly.mean.date.jav <- monthly.mean.date
+write.zoo(round(xts(coredata(monthly.mean.date.jav), index((monthly.mean.date.jav))-15*24*60*60),2), "Ohat1/MonthlyMean.csv", sep = ";", dec = ",")
