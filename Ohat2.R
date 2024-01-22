@@ -142,5 +142,4 @@ potlas <- xts(rep(NA,3),
               as.Date(paste0('2022-0',2:4,'-01')) - 1)
 monthly.mean.date.jav <- c(monthly.mean.date, potlas)
 monthly.mean.date.jav <- na.approx(monthly.mean.date.jav)
-write.zoo(round(monthly.mean.date.jav,2), "Ohat2/MonthlyMean.csv", sep = ";", dec = ",")
-
+write.zoo(xts(round(coredata(monthly.mean.date.jav),2), index((monthly.mean.date.jav))-15*24*60*60), "Ohat2/MonthlyMean.csv", sep = ";", dec = ",")
