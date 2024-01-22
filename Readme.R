@@ -78,7 +78,7 @@ dev.off()
 jpeg(file = "Ohat1/Ohatfull.jpg", width = 16, height = 7, unit = "cm", pointsize = 10, res = 300)
 
 par(mar = c(3.1, 3.6, 0.6, 0.2), mgp = c(2.5,1,0), las = 1)
-plot.zoo(ohat1.xts, xaxt = "n", xlab ="", ylab = "h [m]", xaxs = "i", type = "n")
+plot.zoo(ohat1.xts, xaxt = "n", xlab ="", ylab = "h [m]", xaxs = "i", type = "n",ylim = c(-5.2,-3.75))
 timeaxtics <- seq(as.POSIXct("2021-07-01"), as.POSIXct("2023-09-01") , by = "month")
 axis(1, at = timeaxtics, labels = FALSE)
 axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
