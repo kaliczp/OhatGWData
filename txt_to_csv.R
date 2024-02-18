@@ -1,4 +1,4 @@
-setwd("C:/Users/Admin/Documents/TDK/TDK3/Egyek aszálymonitoring adatok/Relatív páratart")
+setwd("Relativ paratart")
 filelist = list.files(pattern = ".txt")
 for (i in 1:length(filelist)){
   input<-filelist[i]
@@ -8,3 +8,4 @@ for (i in 1:length(filelist)){
   write.table(data, file=output, sep=";", col.names=TRUE, row.names=FALSE)
   
 }
+
