@@ -137,14 +137,20 @@ data_Szentistvan <- data_Szentistvan %>%
   summarize(avg_talajnedv = mean(value))
 
 # Egyesítjük az adatokat
+
 merged_data <- bind_rows(data_Egyek, data_Kunmadaras, data_Görbehaza, data_Szentistvan)
 
 # Rajzoljuk meg a grafikont
-ggplot(merged_data, aes(x = as.Date(date), y = avg_talajnedv, color = station.name)) +
+ggplot(data = merged_data, aes(x = as.Date(date), y = avg_talajnedv, color = station.name)) +
   geom_line() +
   labs(x = "Date", y = "Talajnedvesség", color = "Terület", title = "Talajnedvesség változása az idő függvényében") +
   theme_minimal()
 
+
+ggplot(data = merged_data, aes(x = anytime(date), y = avg_talajnedv, color = station.name)) +
+  geom_line() +
+  labs(x = "Date", y = "Talajnedvesség", color = "Terület", title = "Talajnedvesség változása az idő függvényében") +
+  theme_minimal()
 
 Paratart_talajnedv22 <- read.csv2("2022-05-01-06-30-Paratart_talajnedv_Egyek.txt.txt", dec = ".")
 Paratart_talajnedv22 <- read.csv2("2022-05-01-06-30-Paratart_talajnedv_Kunmadaras.txt.txt", dec = ".")
