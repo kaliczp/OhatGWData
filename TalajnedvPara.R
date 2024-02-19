@@ -18,5 +18,12 @@ plot(Humidity_Egyek.xts['2023-07-10'])
 write.zoo(Humidity_Egyek.xts, "Humidity_Egyek.csv", sep = ";", dec = ".")
 
 ## Talajnedvesség -- ez nem működik -- valahogy bele kéne rakni a talajnedv.xts-be a station.name-t is, hogy utána tudjunk négy különböző görbét rajzolni
-Talajnedv.xts <- xts(data_Egyek[data_Egyek$parameter == "Talajnedvesség", "value", "station.name"], as.POSIXct(data_Egyek[data_Egyek$parameter == "Talajnedvesség", "date"]))
-plot(Talajnedv.xts))
+## Szerintem először a szintekkel kell megküzeni. Pl.:
+TalajnLevels <- c("10 cm", "20 cm", "30 cm", "45 cm", "60 cm", "75 cm")
+EgyekTalajnedv.df <- data.frame(D10 = numeric(3000), D20 = numeric(3000), D30 = numeric(3000), D45 = numeric(3000), D60 = numeric(3000), D75 = numeric(3000))
+for(tti in 1:length(TalajnLevels)){
+    EgyekTalajnedv.df[,tti] <- data_Egyek[data_Egyek$parameter == "Talajnedvesség" & data_Egyek$level == TalajnLevels[tti], "value"]
+}
+Talajnedv.xts <- xts(EgyekTalajnedv.df, as.POSIXct(data_Egyek[data_Egyek$parameter == "Talajnedvesség" & data_Egyek$level ==TalajnLevels[1] , "date"]))
+plot(Talajnedv.xts)
+plot(Talajnedv.xts['2023'])
