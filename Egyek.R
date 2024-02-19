@@ -86,3 +86,73 @@ EgyekCsweek.xts <- period.apply(napi.csap.Date, endpoints(napi.csap.Date, "weeks
 
 write.zoo(cbind(DerCsweek.xts,EgyekCsweek.xts), "Egyek/DebrEgyekHeti.csv", sep = ";", dec = ",")
 plot(DerCsweek.xts - EgyekCsweek.xts)
+
+##Egyek, Görbeháza, Kunmadaras, Szentistván relatív páratartalom és talaj nedvességtartalom összehasonlításai
+install.packages("ggplot2")
+install.packages("dplyr")
+install.packages("anytime")
+library(anytime)
+library(ggplot2)
+library(dplyr)
+
+data_Egyek <- read.csv2("2022-05-01-06-30-Paratart_talajnedv_Egyek.txt.txt", dec = ".")
+data_Kunmadaras <- read.csv2("2022-05-01-06-30-Paratart_talajnedv_Kunmadaras.txt.txt", dec = ".")
+data_Görbehaza <- read.csv2("2022-05-01-06-30-Paratart_talajnedv_Görbehaza.txt.txt", dec = ".")
+data_Szentistvan <- read.csv2("2022-05-01-06-30-Paratart_talajnedv_Szentistvan.txt.txt", dec = ".")
+
+merged_data <- bind_rows(
+  mutate(data_Egyek, station.name = "Egyek"),
+  mutate(data_Kunmadaras, station.name = "Kunmadaras"),
+  mutate(data_Görbehaza, station.name = "GĂ¶rbehĂˇza"),
+  mutate(data_Szentistvan, station.name = "SzentistvĂˇn")
+)
+
+# Rajzolj grafikont
+ggplot(merged_data, aes(x = date, y = value, color = station.name)) +
+  geom_line() +
+  labs(x = "Date", y = "Talajnedvesség", color = "Terület", title = "Talajnedvesség változása az idő függvényében") +
+  theme_minimal()
+
+## Újabb kísérlet
+
+# Átlagoljuk az adatokat háromnaponta
+data_Egyek <- data_Egyek %>%
+  mutate(date = anytime(date)) %>%
+  group_by(station.name, as.numeric(as.Date(date) - min(as.Date(date))) %/% 3) %>%
+  summarize(avg_talajnedv = mean(value))
+
+data_Kunmadaras <- data_Kunmadaras %>%
+  mutate(date = anytime(date)) %>%
+  group_by(station.name, as.numeric(as.Date(date) - min(as.Date(date))) %/% 3) %>%
+  summarize(avg_talajnedv = mean(value))
+
+data_Görbehaza <- data_Görbehaza %>%
+  mutate(date = anytime(date)) %>%
+  group_by(station.name, as.numeric(as.Date(date) - min(as.Date(date))) %/% 3) %>%
+  summarize(avg_talajnedv = mean(value))
+
+data_Szentistvan <- data_Szentistvan %>%
+  mutate(date = anytime(date)) %>%
+  group_by(station.name, as.numeric(as.Date(date) - min(as.Date(date))) %/% 3) %>%
+  summarize(avg_talajnedv = mean(value))
+
+# Egyesítjük az adatokat
+merged_data <- bind_rows(data_Egyek, data_Kunmadaras, data_Görbehaza, data_Szentistvan)
+
+# Rajzoljuk meg a grafikont
+ggplot(merged_data, aes(x = as.Date(date), y = avg_talajnedv, color = station.name)) +
+  geom_line() +
+  labs(x = "Date", y = "Talajnedvesség", color = "Terület", title = "Talajnedvesség változása az idő függvényében") +
+  theme_minimal()
+
+
+Paratart_talajnedv22 <- read.csv2("2022-05-01-06-30-Paratart_talajnedv_Egyek.txt.txt", dec = ".")
+Paratart_talajnedv22 <- read.csv2("2022-05-01-06-30-Paratart_talajnedv_Kunmadaras.txt.txt", dec = ".")
+Paratart_talajnedv22 <- read.csv2("2022-05-01-06-30-Paratart_talajnedv_Görbehaza.txt.txt", dec = ".")
+Paratart_talajnedv22 <- read.csv2("2022-05-01-06-30-Paratart_talajnedv_Szentistvan.txt.txt", dec = ".")
+
+Paratart_talajnedv23 <- read.csv2("2023-07-01-08-31-Paratart_talajnedv_Egyek.txt.txt", dec = ".")
+Paratart_talajnedv23 <- read.csv2("2023-07-01-08-31-Paratart_talajnedv_Kunmadaras.txt.txt", dec = ".")
+Paratart_talajnedv23 <- read.csv2("2023-07-01-08-31-Paratart_talajnedv_Görbehaza.txt.txt", dec = ".")
+Paratart_talajnedv23 <- read.csv2("2023-07-01-08-31-Paratart_talajnedv_Szentistvan.txt.txt", dec = ".")
+

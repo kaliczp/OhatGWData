@@ -1,4 +1,4 @@
-setwd("C:\\Users\Admin\Documents\TDK\TDK3\Egyek aszálymonitoring adatok\Relativ_paratart")
+setwd("C:\\Users\\Admin\\Documents\\TDK\\TDK3\\Egyek_aszalymonitoring_adatok\\Relativ_paratart")
 filelist = list.files(pattern = ".txt")
 for (i in 1:length(filelist)){
   input<-filelist[i]
@@ -9,4 +9,3 @@ for (i in 1:length(filelist)){
   
 }
 
-"C:\Users\Admin\Documents\TDK\TDK3\Egyek aszálymonitoring adatok\Relativ_paratart"
