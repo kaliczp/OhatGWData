@@ -16,6 +16,7 @@ plot(Humidity_Egyek.xts['2023'])
 plot(Humidity_Egyek.xts['2023-07'])
 plot(Humidity_Egyek.xts['2023-07-10'])
 write.zoo(Humidity_Egyek.xts, "Humidity_Egyek.csv", sep = ";", dec = ".")
+## Napi relatív páratartalom
 Daily_Humidity_Egyek.xts <- apply.daily(Humidity_Egyek.xts, mean)
 plot(Daily_Humidity_Egyek.xts)
 write.zoo(Daily_Humidity_Egyek.xts, "Daily_Humidity_egyek.csv", sep=";", dec=",")

@@ -13,7 +13,7 @@ intervallum <- '2022-06-26/2022-08-31'
 ## intervallum <- '2021-11-01/2021-11-26' négy óránként
 intervallum <- '2021-11-30/2021-12-27'
 
-oh2rech.w <- White(ohat2jav.xts[intervallum], Sy = 0.134)
+oh2rech.w <- White(ohat2jav.xts[intervallum], Sy = 0.085)
 plot.White(oh2rech.w)
 oh2.slope <- oh2rech.w$results[,1]
 select <- !coredata(csapsel.xts[intervallum])[,1]
@@ -30,14 +30,14 @@ intervallumok <- c('2023-06-25/2023-08-31'
 ,'2021-11-30/2021-12-27'
 )
 
-oh2rech.w <- White(ohat2jav.xts[intervallumok[1]], Sy = 0.134, median = FALSE)
+oh2rech.w <- White(ohat2jav.xts[intervallumok[1]], Sy = 0.085, median = FALSE)
 oh2.slope <- oh2rech.w$results[,1]
 select <- !coredata(csapsel.xts[intervallumok[1]])
 slope.xts <- oh2.slope[select]
 
 ##Lefuttatja, és összefűzi
 for(intervallum in intervallumok[-1]){ 
-    oh2rech.w <- White(ohat2jav.xts[intervallum], Sy = 0.134, median = FALSE)
+    oh2rech.w <- White(ohat2jav.xts[intervallum], Sy = 0.085, median = FALSE)
     oh2.slope <- oh2rech.w$results[,1]
     select <- !coredata(csapsel.xts[intervallum])
     slope.xts <- c(slope.xts, oh2.slope[select])
@@ -97,9 +97,9 @@ napidiff <- diff(ohat2jav.xts[napielso])
 
 ## Daily recharge data
 list.rech <- list(
-  W2022 = napidiff['2021-11-01/2022-02-28']*1000*0.134,
+  W2022 = napidiff['2021-11-01/2022-02-28']*1000*0.085,
   S2022 = slopeDatnona2022,
-  W2023 = napidiff['2022-11-01/2023-02-28']*1000*0.134,
+  W2023 = napidiff['2022-11-01/2023-02-28']*1000*0.085,
   S2023 = slopeDatnona2023)
 
 ## Téli recharge válogatás 2021/2022
@@ -135,7 +135,7 @@ intervallum <- '2022-06-26/2022-08-31'
 ## intervallum <- '2021-11-01/2021-11-26' négy óránként
 intervallum <- '2021-11-30/2021-12-27'
 
-oh1rech.w <- White(ohat1.xts[intervallum], Sy = 0.134)
+oh1rech.w <- White(ohat1.xts[intervallum], Sy = 0.085)
 plot(oh1rech.w$ori.gw)
 plot.White(oh1rech.w)
 oh2.slope <- oh2rech.w$results[,1]
