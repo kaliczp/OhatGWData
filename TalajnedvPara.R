@@ -16,7 +16,9 @@ plot(Humidity_Egyek.xts['2023'])
 plot(Humidity_Egyek.xts['2023-07'])
 plot(Humidity_Egyek.xts['2023-07-10'])
 write.zoo(Humidity_Egyek.xts, "Humidity_Egyek.csv", sep = ";", dec = ".")
-Daily_Humidity_Egyek.xts <- apply.daily("Humidity_Egyek.xts", function(x) var(x))
+Daily_Humidity_Egyek.xts <- apply.daily(Humidity_Egyek.xts, mean)
+plot(Daily_Humidity_Egyek.xts)
+write.zoo(Daily_Humidity_Egyek.xts, "Daily_Humidity_egyek.csv", sep=";", dec=",")
 
 ## Talajnedvesség -- ez nem működik -- valahogy bele kéne rakni a talajnedv.xts-be a station.name-t is, hogy utána tudjunk négy különböző görbét rajzolni
 ## Szerintem először a szintekkel kell megküzeni. Pl.:
