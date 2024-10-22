@@ -1,11 +1,13 @@
 ## Fájlnevek beolvasása
 ## Csak csapadék
+## Innen lentről a cspafilenames elől kivettem egy homefilenames, lehet vissza kell rakni
 csapfilenames <- homfilenames <- dir("Egyek", patt = "^cs2")
 csap <- read.csv2(paste0("Egyek/", csapfilenames[1]))
 ## Az összes csapadék fájlra
 for(tti in 2:length(csapfilenames)) {
     csap <- rbind(csap, read.csv2(paste0("Egyek/", csapfilenames[tti])))
 }
+
 ## Dupla dátum kiszedése
 csap <- csap[!duplicated(csap$date),]
 ## Idősor

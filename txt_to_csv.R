@@ -8,4 +8,18 @@ for (i in 1:length(filelist)){
   write.table(data, file=output, sep=";", col.names=TRUE, row.names=FALSE)
   
 }
+setwd("C:/Users/Admin/Documents/TDK/TDK3/OhatGWData/")
+getwd()
 
+setwd("C:/Users/Admin/Documents/TDK/TDK3/OhatGWData/Egyek")
+filelist = "23-júl1-szept1.txt"
+for (i in 1:length(filelist)){
+  input<-filelist[i]
+  output<-paste0(input, ".csv")
+  print(paste("Processing the file:", input))
+  data = read.csv2(input, header = TRUE)   
+  write.table(data, file=output, sep=";", col.names=TRUE, row.names=FALSE)
+  
+}
+setwd("C:/Users/Admin/Documents/TDK/TDK3/OhatGWData/")
+getwd()
