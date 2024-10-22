@@ -2,9 +2,11 @@
 ttfiles21 <- dir("2021", patt = "Ohat2[1-9abc][0-9][0-9].TXT")
 ttfiles22 <- dir("2022", patt = "Ohat2[1-9abc][0-9][0-9].TXT")
 ttfiles23 <- dir("2023", patt = "Ohat2[1-9abc][0-9][0-9].TXT")
+ttfiles24 <- dir("2024", patt = "Ohat2[1-9abc][0-9][0-9].TXT")
 ttfiles <- c(paste(2021, ttfiles21, sep = "/"),
              paste(2022, ttfiles22, sep = "/"),
-             paste(2023, ttfiles23, sep = "/"))
+             paste(2023, ttfiles23, sep = "/"),
+             paste(2024, ttfiles24, sep = "/"))
 ttfiles <- ttfiles[-3] ## Április ua. mint december
 
 ## A fájlok beolvasása
@@ -26,6 +28,7 @@ ohat2.xts['2022-06-25 09:50/2022-06-25 10:00'] <- NA
 
 ohat2jav.xts <- ohat2.xts
 
+###Adathiánnyal felülírni ezt a szakaszt
 ohat2.xts['2022-06-25 09:00/2022-06-25 11:10']
 -4.649 + 5.05
 
@@ -38,18 +41,19 @@ ohat2jav.xts['/2021-11-27 08:00'] <- ohat2jav.xts['/2021-11-27 08:00'] + 0.015
 ohat2jav.xts['2022-10-21 10:10/2022-10-21 10:20'] <- NA
 ohat2jav.xts['2022-12-21 13:40/2022-12-21 13:50'] <- NA # Eltolódik megnézni!
 ohat2jav.xts['2023-06-24 12:30/2023-06-24 12:40'] <- NA
+ohat2jav.xts['2024-06-20 12:30/2024-06-21 14:40'] <- NA
 plot(ohat2jav.xts)
 
 pdf(file = "Ohat2/Ohat2full.pdf", width = 100/2.54, height = 30/2.54)
 par(mar = c(3.1, 3.1, 0.2, 0.2), mgp = c(2,1,0))
 plot.zoo(ohat2jav.xts, xaxt = "n", xlab ="", ylab = "h [m]", lwd = 2, xaxs = "i", type = "n")
-timeaxtics <- seq(as.POSIXct("2021-11-01"), as.POSIXct("2023-09-01") , by = "month")
+timeaxtics <- seq(as.POSIXct("2021-11-01"), as.POSIXct("2024-10-01") , by = "month")
 axis(1, at = timeaxtics, labels = FALSE)
 axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
 axis(1, at = timeaxtics, labels = FALSE)
-timeyears <- as.Date(paste(2021:2023, "01-01", sep = "-"))
+timeyears <- as.Date(paste(2021:2024, "01-01", sep = "-"))
 axis(1, as.POSIXct(timeyears), tck = 1, lab = F, col = "lightgray")
-text(as.POSIXct(timeyears  + c(320, 180, 150)), -5, 2021:2023, cex = 4, col = "gray")
+text(as.POSIXct(timeyears  + c(320, 180, 180, 110)), -5, 2021:2024, cex = 4, col = "gray")
 text(as.POSIXct(as.Date("2021-12-01")),-3.95, "Ohat2", cex = 4, col = "gray")
 lines(as.zoo(ohat2jav.xts), lwd = 2)
 box()
@@ -115,6 +119,7 @@ png(file = "Ohat2/Ohat2full.png", width = 14.3, height = 6.2, unit = "cm", point
 par(mar = c(2.6, 3.6, 0.1, 0.1), mgp = c(2.5,1,0), las = 1)
 plot.zoo(ohat2jav.xts, xaxt = "n", xlab ="", ylab = "h [m]", lwd = 1, xaxs = "i")
 timeaxtics <- seq(as.POSIXct("2021-11-01"), as.POSIXct("2023-09-01") , by = "month")
+
 axis(1, at = timeaxtics, labels = FALSE)
 par(mgp = c(2.5, 0.4, 0))
 axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
@@ -143,3 +148,4 @@ potlas <- xts(rep(NA,3),
 monthly.mean.date.jav <- c(monthly.mean.date, potlas)
 monthly.mean.date.jav <- na.approx(monthly.mean.date.jav)
 write.zoo(xts(round(coredata(monthly.mean.date.jav),2), index((monthly.mean.date.jav))-15*24*60*60), "Ohat2/MonthlyMean.csv", sep = ";", dec = ",")
+
