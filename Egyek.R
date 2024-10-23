@@ -32,10 +32,18 @@ para <- rbind(para, ttraw[ttraw$parameter == "Relatív páratartalom",])
 }
 ## Dupla dátum kiszedése
 hom <- hom[!duplicated(hom$date),]
+
+# Távolítsd el a 26660 és 28130 közötti sorokat
+hom <- hom[-(26659:28151), ]
+
+
 para <- para[!duplicated(para$date),]
+
+
 ## Idősor
 hom.xts <- xts(hom$value, as.POSIXct(hom$date))
 para.xts <- xts(para$value, as.POSIXct(para$date))
+
 ## Napi és havi átlag
 napi.hom <- apply.daily(hom.xts, function(x){mean(x, na.rm = TRUE)})
 havi.hom <- apply.monthly(hom.xts, function(x){mean(x, na.rm = TRUE)})
