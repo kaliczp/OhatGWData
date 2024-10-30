@@ -8,6 +8,8 @@ oh2.w2 <- White(ohat2jav.xts['2023-08-08 23:50:00/2023-08-31'], Sy = 0.085)
 oh2all.xts <- c(oh2all.xts, oh2.w2$results)
 oh2.w2 <- White(ohat2jav.xts['2022-05-01 23:50:00/2022-06-30'], Sy = 0.085)
 oh2all.xts <- c(oh2all.xts, oh2.w2$results)
+oh2.w2 <- White(ohat2jav.xts['2024-05-01 23:50:00/2024-09-30'], Sy = 0.085)
+oh2all.xts <- c(oh2all.xts, oh2.w2$results)
 
 write.zoo(oh2all.xts, "GW_ET.csv", sep = ";", dec = ".")
 
