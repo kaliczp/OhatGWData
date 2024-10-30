@@ -58,6 +58,9 @@ write.zoo(havi.para, "Egyek/havipara.csv", sep = ";", dec = ",")
 napi.hom2024 <- apply.daily(hom.xts['2024'], function(x){mean(x, na.rm = TRUE)})
 write.zoo(napi.hom2024, "Egyek/hom2024.csv", sep = ";", dec = ",")
 
+## Ezt még át kell nézni!
+para.xts <- xts(as.numeric(para$value), as.POSIXct(para$date))
+
 napi.para2024 <- apply.daily(para.xts['2024'], function(x){mean(x, na.rm = TRUE)})
 write.zoo(napi.para2024, "Egyek/para2024.csv", sep = ";", dec = ",")
 
