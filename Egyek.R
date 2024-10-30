@@ -34,7 +34,7 @@ para <- rbind(para, ttraw[ttraw$parameter == "Relatív páratartalom",])
 hom <- hom[!duplicated(hom$date),]
 
 # Távolítsd el a 26660 és 28130 közötti sorokat
-hom <- hom[-(26659:28151), ]
+# hom <- hom[-(26659:28151), ]
 
 
 para <- para[!duplicated(para$date),]
@@ -53,6 +53,15 @@ napi.para <- apply.daily(para.xts, function(x){mean(x, na.rm = TRUE)})
 havi.para <- apply.monthly(para.xts, function(x){mean(x, na.rm = TRUE)})
 write.zoo(napi.para, "Egyek/para.csv", sep = ";", dec = ",")
 write.zoo(havi.para, "Egyek/havipara.csv", sep = ";", dec = ",")
+
+## 2024 kiírása
+napi.hom2024 <- apply.daily(hom.xts['2024'], function(x){mean(x, na.rm = TRUE)})
+write.zoo(napi.hom2024, "Egyek/hom2024.csv", sep = ";", dec = ",")
+
+napi.para2024 <- apply.daily(para.xts['2024'], function(x){mean(x, na.rm = TRUE)})
+write.zoo(napi.para2024, "Egyek/para2024.csv", sep = ";", dec = ",")
+
+
 
 ## A maradék egybe fájlok
 egybefilenames <- dir("Egyek", patt = "txt")
