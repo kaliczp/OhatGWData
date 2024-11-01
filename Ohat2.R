@@ -57,7 +57,7 @@ text(as.POSIXct(timeyears  + c(320, 180, 180, 110)), -5, 2021:2024, cex = 4, col
 text(as.POSIXct(as.Date("2021-12-01")),-3.95, "Ohat2", cex = 4, col = "gray")
 lines(as.zoo(ohat2jav.xts), lwd = 2)
 box()
-dev.off()
+##dev.off()
 
 pdf(file = "Ohat1/Ohatfull.pdf", width = 100/2.54, height = 30/2.54)
 
@@ -77,7 +77,7 @@ axis(1, at = ISOdate(2022:2023, 1, 01,0), labels = FALSE, tck = 1)
 lines(as.zoo(ohat1.xts), lwd = 1)
 box()
 
-dev.off()
+##dev.off()
 
 jpeg(file = "Ohat2/Ohat2full2.0.jpg", width = 14.3, height = 7, unit = "cm", pointsize = 10, res = 300)
 
@@ -93,7 +93,7 @@ axis(1, at = ISOdate(2022:2023, 1, 01,0), labels = FALSE, tck = 1)
 lines(as.zoo(ohat2jav.xts), lwd = 1)
 box()
 
-dev.off()
+##dev.off()
 
 
 ## Kiürül
@@ -109,7 +109,7 @@ plot.zoo(ohat2jav.xts['2022-06-22/2022-09-30'], xaxt = "n", xlab ="", ylab = "h 
 timeaxtics <- seq(as.POSIXct("2021-07-01"), as.POSIXct("2022-10-02") , by = "month")
 axis(1, at = timeaxtics, labels = FALSE)
 axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
-dev.off()
+##dev.off()
 
 jpeg(file = "Ohat2/Ohat2full.jpg", width = 16, height = 7, unit = "cm", pointsize = 10, res = 300)
 par(mar = c(2.1, 3.6, 0.1, 0.1), mgp = c(2.5,1,0), las = 1)
@@ -129,7 +129,7 @@ par(mgp = c(2.5, 0.4, 0))
 axis.POSIXct(1, at = timeaxtics + 15*24*60*60, tcl = 0, cex.axis = 0.8, format = "%b")
 par(mgp = c(2.5, 1.6, 0))
 axis.POSIXct(1, at = as.POSIXct(c("2021-11-15", "2022-06-30", "2023-04-30")), tcl = 0, cex.axis = 0.8, format = "%Y")
-dev.off()
+##dev.off()
 
 
 ## Amplitúdók
@@ -153,3 +153,4 @@ monthly.mean.date.jav <- c(monthly.mean.date, potlas)
 monthly.mean.date.jav <- na.approx(monthly.mean.date.jav)
 write.zoo(xts(round(coredata(monthly.mean.date.jav),2), index((monthly.mean.date.jav))-15*24*60*60), "Ohat2/MonthlyMean.csv", sep = ";", dec = ",")
 
+plot.White(oh2.w2['2024-09-01/2024-09-30'])
