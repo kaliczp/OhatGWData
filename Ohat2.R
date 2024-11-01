@@ -44,7 +44,7 @@ ohat2jav.xts['2023-06-24 12:30/2023-06-24 12:40'] <- NA
 ohat2jav.xts['2024-06-20 12:30/2024-06-21 14:40'] <- NA
 plot(ohat2jav.xts)
 
-pdf(file = "Ohat2/Ohat2full.pdf", width = 100/2.54, height = 30/2.54)
+## pdf(file = "Ohat2/Ohat2full.pdf", width = 100/2.54, height = 30/2.54)
 par(mar = c(3.1, 3.1, 0.2, 0.2), mgp = c(2,1,0))
 plot.zoo(ohat2jav.xts, xaxt = "n", xlab ="", ylab = "h [m]", lwd = 2, xaxs = "i", type = "n")
 timeaxtics <- seq(as.POSIXct("2021-11-01"), as.POSIXct("2024-10-01") , by = "month")
@@ -59,7 +59,7 @@ lines(as.zoo(ohat2jav.xts), lwd = 2)
 box()
 ##dev.off()
 
-pdf(file = "Ohat1/Ohatfull.pdf", width = 100/2.54, height = 30/2.54)
+##pdf(file = "Ohat1/Ohatfull.pdf", width = 100/2.54, height = 30/2.54)
 
 par(mar = c(3.1, 3.6, 0.2, 0.2), mgp = c(2.5,1,0))
 plot.zoo(ohat1.xts, xaxt = "n", xlab ="", ylab = "h [m]", xaxs = "i", type = "n")
@@ -79,7 +79,7 @@ box()
 
 ##dev.off()
 
-jpeg(file = "Ohat2/Ohat2full2.0.jpg", width = 14.3, height = 7, unit = "cm", pointsize = 10, res = 300)
+## jpeg(file = "Ohat2/Ohat2full2.0.jpg", width = 14.3, height = 7, unit = "cm", pointsize = 10, res = 300)
 
 par(mar = c(3.1, 3.6, 0.6, 0.2), mgp = c(2.5,1,0), las = 1)
 plot.zoo(ohat2jav.xts, xaxt = "n", xlab ="", ylab = "h [m]", xaxs = "i", type = "n")
@@ -103,7 +103,7 @@ plot(ohat2jav.xts['2022-07-25/2022-08-03'])
 plot(ohat2jav.xts['2023-07-12/2023-07-14'])
 plot(ohat2jav.xts['2023-07-24/2023-07-26'])
 
-pdf(file = "Ohat2/Ohat2erdekes.pdf", width = 100/2.54, height = 30/2.54)
+## pdf(file = "Ohat2/Ohat2erdekes.pdf", width = 100/2.54, height = 30/2.54)
 par(mar = c(3.1, 3.1, 0.2, 0.2), mgp = c(2,1,0))
 plot.zoo(ohat2jav.xts['2022-06-22/2022-09-30'], xaxt = "n", xlab ="", ylab = "h [m]", lwd = 2, xaxs = "i")
 timeaxtics <- seq(as.POSIXct("2021-07-01"), as.POSIXct("2022-10-02") , by = "month")
