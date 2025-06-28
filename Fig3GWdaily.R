@@ -6,3 +6,23 @@ names(GW_daily) <- c("Date",
                            sep = "_")
                      )
 GW_daily$Date <- as.Date(GW_daily$Date)
+
+GWcolors <- c(
+    ref = "#8d8d8d",
+    active = "#00c3ff",
+    passive = "#ffd500")
+
+library(xts)
+GW_daily.xts <- xts(GW_daily[,-1], GW_daily[,1])
+
+pdf("Fig3GWdaily.pdf")
+GW.akt <- -GW_daily.xts["2000/2010"] 
+plot.zoo(GW.akt$shall_reference, ylim = c(-5,1), type = "n",
+         axes = FALSE,
+         xlab = "GWL", ylab = ""
+         )
+lines(as.zoo(GW.akt$shall_reference), col = GWcolors["ref"], ylim = c(1,-5), lwd = 2)
+lines(as.zoo(GW.akt$shall_active), col = GWcolors["active"], ylim = c(1,-5), lwd = 2)
+lines(as.zoo(GW.akt$shall_passive), col = GWcolors["passive"], ylim = c(1,-5), lwd = 2)
+axis(2)
+dev.off()
