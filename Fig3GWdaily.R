@@ -24,6 +24,7 @@ plot.zoo(GW.akt$shall_reference, ylim = c(-5,1), type = "n",
          xaxs = "i",
          xlab = "", ylab = "GWL"
          )
+grid(nx = NA, ny = NULL)
 lines(as.zoo(GW.akt$shall_reference), col = GWcolors["ref"], ylim = c(1,-5), lwd = 2)
 lines(as.zoo(GW.akt$shall_active), col = GWcolors["active"], ylim = c(1,-5), lwd = 2)
 lines(as.zoo(GW.akt$shall_passive), col = GWcolors["passive"], ylim = c(1,-5), lwd = 2)
@@ -33,6 +34,7 @@ plot.zoo(GW.akt$medi_reference, ylim = c(-5,1), type = "n",
          xaxs = "i",
          xlab = "", ylab = "GWL"
          )
+grid(nx = NA, ny = NULL)
 lines(as.zoo(GW.akt$medi_reference), col = GWcolors["ref"], ylim = c(1,-5), lwd = 2)
 lines(as.zoo(GW.akt$medi_active), col = GWcolors["active"], ylim = c(1,-5), lwd = 2)
 lines(as.zoo(GW.akt$medi_passive), col = GWcolors["passive"], ylim = c(1,-5), lwd = 2)
@@ -42,6 +44,7 @@ plot.zoo(GW.akt$deep_reference, ylim = c(-5,1), type = "n",
          xaxs = "i",
          xlab = "", ylab = "GWL"
          )
+grid(nx = NA, ny = NULL)
 lines(as.zoo(GW.akt$deep_reference), col = GWcolors["ref"], ylim = c(1,-5), lwd = 2)
 lines(as.zoo(GW.akt$deep_active), col = GWcolors["active"], ylim = c(1,-5), lwd = 2)
 lines(as.zoo(GW.akt$deep_passive), col = GWcolors["passive"], ylim = c(1,-5), lwd = 2)
