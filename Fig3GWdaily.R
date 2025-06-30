@@ -74,6 +74,12 @@ for(gwdepth in c("shall", "medi", "deep")){
            pch = 19,
            col = GWcolors
            )
+    for(tti in 1:3) {
+        lines(c(tti,tti),c(currentAve[tti, "Mean"]-currentAve[tti, "SD"],
+                           currentAve[tti, "Mean"]+currentAve[tti, "SD"]),
+              col = GWcolors[tti],
+              lwd = 2)
+    }
     box()
 }
 dev.off()
