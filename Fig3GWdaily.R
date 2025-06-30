@@ -17,9 +17,9 @@ GW_daily.xts <- xts(GW_daily[,-1], GW_daily[,1])
 GW.akt <- -GW_daily.xts["2000/2010"] 
 selectedYears <- as.Date(paste0(2000:2010,"-01-01"))
 
-pdf("Fig3GWdaily.pdf", width = 10/2.54, height = 15/2.54)
+pdf("Fig3GWdaily.pdf", width = 10/2.54, height = 15/2.54, pointsize = 10)
 par(mfrow = c(3,1), las = 1,
-    mar = c(0,4.1,0,0.3), oma = c(3.1,0,1.1,0))
+    mar = c(0,4.1,0,0.3), oma = c(2.1,0,2.1,0))
 plot.zoo(GW.akt$shall_reference, ylim = c(-5,1), type = "n",
          axes = FALSE,
          xaxs = "i",
