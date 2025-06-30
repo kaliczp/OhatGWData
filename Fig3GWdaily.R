@@ -61,6 +61,10 @@ for(gwdepth in c("shall", "medi", "deep")){
         axside <- ifelse(gwdepth == "shall", 3, 1)
         axis.Date(axside, at= c(selectedYears, as.Date("2010-12-31")), labels = FALSE)
         axis.Date(axside, at= selectedYears + 365/2, tck = 0, format = "%Y")
+        if(gwdepth == "deep") {
+            legend("topleft", legend = c("Reference", "Passive", "Active"),
+                   col = GWcolors, lwd = 2, bg = "white")
+            }
     }
     currentAve <- -AverageDepth[AverageDepth$GWdepth == gwdepth, c("Mean", "SD")]
     plot(currentAve[, "Mean"], type = "n",
