@@ -29,7 +29,10 @@ grid(nx = NA, ny = NULL)
 lines(as.zoo(GW.akt$shall_reference), col = GWcolors["ref"], ylim = c(1,-5), lwd = 2)
 lines(as.zoo(GW.akt$shall_active), col = GWcolors["active"], ylim = c(1,-5), lwd = 2)
 lines(as.zoo(GW.akt$shall_passive), col = GWcolors["passive"], ylim = c(1,-5), lwd = 2)
+## Axes
 axis(2)
+axis.Date(3, at= c(selectedYears, as.Date("2010-12-31")), labels = FALSE)
+axis.Date(3, at= selectedYears + 365/2, tck = 0, format = "%Y")
 plot.zoo(GW.akt$medi_reference, ylim = c(-5,1), type = "n",
          axes = FALSE,
          xaxs = "i",
@@ -39,6 +42,7 @@ grid(nx = NA, ny = NULL)
 lines(as.zoo(GW.akt$medi_reference), col = GWcolors["ref"], ylim = c(1,-5), lwd = 2)
 lines(as.zoo(GW.akt$medi_active), col = GWcolors["active"], ylim = c(1,-5), lwd = 2)
 lines(as.zoo(GW.akt$medi_passive), col = GWcolors["passive"], ylim = c(1,-5), lwd = 2)
+## Axes
 axis(2)
 plot.zoo(GW.akt$deep_reference, ylim = c(-5,1), type = "n",
          axes = FALSE,
@@ -49,6 +53,8 @@ grid(nx = NA, ny = NULL)
 lines(as.zoo(GW.akt$deep_reference), col = GWcolors["ref"], ylim = c(1,-5), lwd = 2)
 lines(as.zoo(GW.akt$deep_active), col = GWcolors["active"], ylim = c(1,-5), lwd = 2)
 lines(as.zoo(GW.akt$deep_passive), col = GWcolors["passive"], ylim = c(1,-5), lwd = 2)
+## Axes
 axis(2)
 axis.Date(1, at= c(selectedYears, as.Date("2010-12-31")), labels = FALSE)
+axis.Date(1, at= selectedYears + 365/2, tck = 0, format = "%Y")
 dev.off()
