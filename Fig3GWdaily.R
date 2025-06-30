@@ -9,17 +9,40 @@ GW_daily$Date <- as.Date(GW_daily$Date)
 
 GWcolors <- c(
     reference = "#8d8d8d",
-    active = "#00c3ff",
-    passive = "#ffd500")
+    passive = "#ffd500",
+    active = "#00c3ff")
+
+AverageDepth <- data.frame(Mean =
+                               c(1.26,
+                                 1.26 - 0.18,
+                                 1.26 - 0.43,
+                                 2.44,
+                                 2.44 - 0.31,
+                                 2.44 - 0.63,
+                                 3.99,
+                                 3.99 - 0.31,
+                                 3.99 - 0.81),
+                           SD =
+                               c(0.38,
+                                 0.22,
+                                 0.26,
+                                 0.31,
+                                 0.31,
+                                 0.29,
+                                 0.3,
+                                 0.32,
+                                 0.25)
+                           )
+AverageDepth$GWdepth <- rep(c("shall", "medi", "deep"), each = 3)
 
 library(xts)
 GW_daily.xts <- xts(GW_daily[,-1], GW_daily[,1])
 GW.akt <- -GW_daily.xts["2000/2010"] 
 selectedYears <- as.Date(paste0(2000:2010,"-01-01"))
 
-pdf("Fig3GWdaily.pdf", width = 10/2.54, height = 15/2.54, pointsize = 10)
-par(mfrow = c(3,1), las = 1,
-    mar = c(0,4.1,0,0.3), oma = c(2.1,0,2.1,0))
+pdf("Fig3GWdaily.pdf", width = 11/2.54, height = 15/2.54, pointsize = 10)
+layout(matrix(c(1,1,1,1,1,1,1,2,3,3,3,3,3,3,3,4,5,5,5,5,5,5,5,6), nrow = 3, byrow = TRUE))
+par(las = 1, mar = c(0,0,0,0), oma=c(2.1,4.1,2.1,3.1))
 for(gwdepth in c("shall", "medi", "deep")){
     combiname <-  paste(gwdepth, "reference", sep = "_")
     plot.zoo(GW.akt[, combiname], ylim = c(-5,1), type = "n",
@@ -39,5 +62,18 @@ for(gwdepth in c("shall", "medi", "deep")){
         axis.Date(axside, at= c(selectedYears, as.Date("2010-12-31")), labels = FALSE)
         axis.Date(axside, at= selectedYears + 365/2, tck = 0, format = "%Y")
     }
+    currentAve <- -AverageDepth[AverageDepth$GWdepth == gwdepth, c("Mean", "SD")]
+    plot(currentAve[, "Mean"], type = "n",
+         axes = FALSE,
+         xlim = c(0.5,3.5), ylim = c(-5,1),
+         xlab = "", ylab = "",
+         )
+    axis(4)
+    grid(nx = NA, ny = NULL)
+    points(currentAve[, "Mean"],
+           pch = 19,
+           col = GWcolors
+           )
+    box()
 }
 dev.off()
