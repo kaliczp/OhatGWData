@@ -41,8 +41,8 @@ GW.akt <- -GW_daily.xts["2000/2010"]
 selectedYears <- as.Date(paste0(2000:2010,"-01-01"))
 
 pdf("Fig3GWdaily.pdf", width = 11/2.54, height = 15/2.54, pointsize = 10)
-layout(matrix(c(1,1,1,1,1,1,1,2,3,3,3,3,3,3,3,4,5,5,5,5,5,5,5,6), nrow = 3, byrow = TRUE))
-par(las = 1, mar = c(0,0,0,0), oma=c(2.1,4.1,2.1,3.1))
+layout(matrix(c(1,2,3,4,5,6), nrow = 3, byrow = TRUE), widths=c(8,1))
+par(las = 1, mar = c(0,0,0,0), oma=c(5.4,4.1,2.1,0.1))
 for(gwdepth in c("shall", "medi", "deep")){
     combiname <-  paste(gwdepth, "reference", sep = "_")
     plot.zoo(GW.akt[, combiname], ylim = c(-5,1), type = "n",
@@ -62,8 +62,8 @@ for(gwdepth in c("shall", "medi", "deep")){
         axis.Date(axside, at= c(selectedYears, as.Date("2010-12-31")), labels = FALSE)
         axis.Date(axside, at= selectedYears + 365/2, tck = 0, format = "%Y")
         if(gwdepth == "deep") {
-            legend("topleft", legend = c("Reference", "Passive", "Active"),
-                   col = GWcolors, lwd = 2, bg = "white")
+            legend("bottom", inset = c(0, -0.33), legend = c("Reference", "Passive", "Active"),
+                   col = GWcolors, lwd = 2, ncol = 3, xpd = NA)
             }
     }
     currentAve <- -AverageDepth[AverageDepth$GWdepth == gwdepth, c("Mean", "SD")]
@@ -72,7 +72,6 @@ for(gwdepth in c("shall", "medi", "deep")){
          xlim = c(0.5,3.5), ylim = c(-5,1),
          xlab = "", ylab = "",
          )
-    axis(4)
     grid(nx = NA, ny = NULL)
     points(currentAve[, "Mean"],
            pch = 19,
