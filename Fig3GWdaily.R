@@ -40,9 +40,10 @@ GW_daily.xts <- xts(GW_daily[,-1], GW_daily[,1])
 GW.akt <- -GW_daily.xts["2000/2010"] 
 selectedYears <- as.Date(paste0(2000:2010,"-01-01"))
 
-pdf("Fig3GWdaily.pdf", width = 11/2.54, height = 15/2.54, pointsize = 10)
+pdf("Fig3GWdaily.pdf", width = 9/2.54, height = 11/2.54, pointsize = 7)
 layout(matrix(c(1,2,3,4,5,6), nrow = 3, byrow = TRUE), widths=c(8,1))
-par(las = 1, mar = c(0,0,0,0), oma=c(5.4,4.1,2.1,0.1))
+ttletter <- 1
+par(las = 1, mar = c(0,0,0,0), oma=c(5.4,2.7,2.1,0.2))
 for(gwdepth in c("shall", "medi", "deep")){
     combiname <-  paste(gwdepth, "reference", sep = "_")
     plot.zoo(GW.akt[, combiname], ylim = c(-5,1), type = "n",
@@ -60,12 +61,13 @@ for(gwdepth in c("shall", "medi", "deep")){
     if(gwdepth == "shall" || gwdepth == "deep") {
         axside <- ifelse(gwdepth == "shall", 3, 1)
         axis.Date(axside, at= c(selectedYears, as.Date("2010-12-31")), labels = FALSE)
-        axis.Date(axside, at= selectedYears + 365/2, tck = 0, format = "%Y")
+        axis.Date(axside, at= selectedYears + 365/2, tck = 0, format = "%Y", mgp = c(3,0.4,0))
         if(gwdepth == "deep") {
             legend("bottom", inset = c(0, -0.33), legend = c("Reference", "Passive", "Active"),
                    col = GWcolors, lwd = 2, ncol = 3, xpd = NA)
             }
     }
+    text(as.Date("2000-03-15"), 0.8, LETTERS[ttletter], font = 2)
     currentAve <- -AverageDepth[AverageDepth$GWdepth == gwdepth, c("Mean", "SD")]
     plot(currentAve[, "Mean"], type = "n",
          axes = FALSE,
@@ -84,5 +86,6 @@ for(gwdepth in c("shall", "medi", "deep")){
               lwd = 2)
     }
     box()
+    ttletter <- ttletter + 1
 }
 dev.off()
