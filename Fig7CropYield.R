@@ -49,6 +49,7 @@ grid(nx=NA, ny = NULL)
 barplot(t(as.matrix(CropYield.loSa[,5:7])), beside = TRUE, col = GWcolors, ylim = c(0,13), names.arg = 2000:2010, axes = FALSE, add = TRUE, mgp = c(3,0.2,0))
 legend("bottom", inset = c(0, -0.31),
        legend = c("Reference", "Passive", "Active", "Rainfed conditions"),
+       bty = "n",
        col = c(GWcolors, 1) , lwd = 3, ncol = 4, xpd = NA)
 box()
 barplot(t(as.matrix(CropYield.loSa[,8:11])), beside = TRUE, col = NA, border = NA, ylim = c(0,13), axes = FALSE)

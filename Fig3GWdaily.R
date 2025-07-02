@@ -64,6 +64,7 @@ for(gwdepth in c("shall", "medi", "deep")){
         axis.Date(axside, at= selectedYears + 365/2, tck = 0, format = "%Y", mgp = c(3,0.4,0))
         if(gwdepth == "deep") {
             legend("bottom", inset = c(0, -0.33), legend = c("Reference", "Passive", "Active"),
+                   bty = "n",
                    col = GWcolors, lwd = 2, ncol = 3, xpd = NA)
             }
     }
@@ -89,3 +90,4 @@ for(gwdepth in c("shall", "medi", "deep")){
     ttletter <- ttletter + 1
 }
 dev.off()
+
