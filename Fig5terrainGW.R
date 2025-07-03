@@ -42,7 +42,8 @@ lines(Terr1[Terr1[,1] > 1981 & Terr1[,1] < 3600,]- 0.28, col = "white", lwd = 6)
 lines(c(1975,1975),c(88,89), col = "white", lwd = 6)
 ## Soil background
 polygon(rbind(Terr1, data.frame(x=c(6271.4,0),y=c(0,0))), col = "#BD9A7A", border = NA)
-grid(col="lightgray", lty = 1)
+grid(ny = NA, col="lightgray", lty = 1)
+lines(rep(c(0, 6271.4,NA),6), rep(86:91, each = 3), col="lightgray", lty = 1)
 ## Forest patch
 lines(c(3000,3000),c(89,89.85), col = "forestgreen", lwd = 1.5)
 lines(c(2160,2219),c(89,89), col = "forestgreen", lwd = 1.5, lend = 1)
