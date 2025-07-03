@@ -28,7 +28,8 @@ plot(Terr1, axes = FALSE, type = "n",
      xlab = "", ylab = "",
      xaxs = "i", yaxs = "i"
      )
-axis(1, lwd = 0.5)
+axis(1, lwd = 0.4)
+axis(1, at = c(0,6271.4), labels = NA, tck = 0, lwd = 0.5)
 axis(2, lwd = 0.5)
 ## Forest
 lines(Terr1[Terr1[,1] > 1981 & Terr1[,1] < 3600,] + 0.26,
