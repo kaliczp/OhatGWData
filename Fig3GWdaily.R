@@ -43,7 +43,7 @@ selectedYears <- as.Date(paste0(2000:2010,"-01-01"))
 pdf("Fig3GWdaily.pdf", width = 9/2.54, height = 11/2.54, pointsize = 7)
 layout(matrix(c(1,2,3,4,5,6), nrow = 3, byrow = TRUE), widths=c(8,1))
 ttletter <- 1
-par(las = 1, mar = c(0,0,0,0), oma=c(5.4,2.7,2.1,0.2))
+par(las = 1, mar = c(0,0,0,0), oma=c(5.4,2.7,2.1,0.2), lwd = 0.5)
 for(gwdepth in c("shall", "medi", "deep")){
     combiname <-  paste(gwdepth, "reference", sep = "_")
     plot.zoo(GW.akt[, combiname], ylim = c(-5,1), type = "n",
@@ -57,11 +57,11 @@ for(gwdepth in c("shall", "medi", "deep")){
         lines(as.zoo(GW.akt[, combiname]), col = GWcolors[gwtype], ylim = c(1,-5), lwd = 2)
     }
     ## Axes
-    axis(2)
+    axis(2, lwd = 0.5)
     if(gwdepth == "shall" || gwdepth == "deep") {
         axside <- ifelse(gwdepth == "shall", 3, 1)
-        axis.Date(axside, at= c(selectedYears, as.Date("2010-12-31")), labels = FALSE)
-        axis.Date(axside, at= selectedYears + 365/2, tck = 0, format = "%Y", mgp = c(3,0.4,0))
+        axis.Date(axside, at= c(selectedYears, as.Date("2010-12-31")), labels = FALSE, lwd = 0.5)
+        axis.Date(axside, at= selectedYears + 365/2, tck = 0, format = "%Y", mgp = c(3,0.4,0), lty = 0)
         if(gwdepth == "deep") {
             legend("bottom", inset = c(0, -0.33), legend = c("Reference", "Passive", "Active"),
                    bty = "n",
