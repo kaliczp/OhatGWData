@@ -29,13 +29,13 @@ Forest3poly <- rbind(Forest3 + data.frame(rep(0,nrow(Forest3)), rep(1, nrow(Fore
 
 
 pdf("Fig5terrainGW.pdf", width = 19/2.54, height = 12/2.54, pointsize = 9)
-par(mfrow = c(2,1), las = 1, mar = c(1.1,4.1,2.1,0.2), oma = c(3,0,0,0))
+par(mfrow = c(2,1), las = 1, mar = c(1.6,4.1,1.1,0.2), oma = c(1,0,0,0))
 plot(Terr1, axes = FALSE, type = "n",
      ylim = c(85, 91),
      xlab = "", ylab = "",
      xaxs = "i", yaxs = "i"
      )
-axis(1, lwd = 0.4)
+axis(1, lwd = 0.4, mgp = c(3, 0.5, 0))
 axis(1, at = c(0,6271.4), labels = NA, tck = 0, lwd = 0.5)
 axis(2, lwd = 0.5)
 ## Soil background
@@ -61,9 +61,9 @@ plot(Terr1, axes = FALSE, type = "n",
      xlab = "", ylab = "",
      xaxs = "i", yaxs = "i"
      )
-axis(1, at = c(seq(0,4000, by = 1000)), lwd = 0.4)
+axis(1, at = c(seq(0,4000, by = 1000)), lwd = 0.4, mgp = c(3, 0.5, 0))
 axis(1, at = c(0,4566), labels = NA, tck = 0, lwd = 0.5)
-mtext("Horizontal distance [m]", side = 1, line = 2, outer = TRUE)
+mtext("Horizontal distance [m]", side = 1, line = 0, outer = TRUE)
 axis(2, lwd = 0.5)
 mtext("Elevation [m a.s.l.]", side = 2, at = 93, line = 3, las = 0)
 ## Soil background
