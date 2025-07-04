@@ -28,6 +28,9 @@ barplot(t(as.matrix(CropYield.clLo[,8:10])), beside = TRUE, col = NA, border = N
 mtext("deep GW", las = 1, line = 1)
 grid(nx=NA, ny = NULL)
 barplot(t(as.matrix(CropYield.clLo[,8:10])), border = NA, beside = TRUE, col = GWcolors, ylim = c(0,13), names.arg = 2000:2010, axes = FALSE, add = TRUE, mgp = c(3,0.2,0))
+## Rainfed
+lines(c(3,4,NA,7,8,NA,11,12,NA,15,16,NA,19,20,NA,23,24,NA,27,28,NA,31,32,NA,35,36,NA,39,40,NA,43,44,NA),
+      rep((CropYield.clLo[,11])[1:11], each = 3), lwd = 3)
 box()
 ## 2nd row
 barplot(t(as.matrix(CropYield.siCl[,2:4])), beside = TRUE, col = NA, border = NA, ylim = c(0,13), lwd = 0.5)
@@ -42,6 +45,9 @@ box()
 barplot(t(as.matrix(CropYield.siCl[,8:10])), beside = TRUE, col = NA, border = NA, ylim = c(0,13), axes = FALSE)
 grid(nx=NA, ny = NULL)
 barplot(t(as.matrix(CropYield.siCl[,8:10])), border = NA, beside = TRUE, col = GWcolors, ylim = c(0,13), names.arg = 2000:2010, axes = FALSE, add = TRUE, mgp = c(3,0.2,0))
+## Rainfed
+lines(c(3,4,NA,7,8,NA,11,12,NA,15,16,NA,19,20,NA,23,24,NA,27,28,NA,31,32,NA,35,36,NA,39,40,NA,43,44,NA),
+      rep((CropYield.siCl[,11])[1:11], each = 3), lwd = 3)
 box()
 ## 3rd row
 barplot(t(as.matrix(CropYield.loSa[,2:4])), beside = TRUE, col = NA, border = NA, ylim = c(0,13), lwd = 0.5)
@@ -61,7 +67,7 @@ barplot(t(as.matrix(CropYield.loSa[,8:10])), beside = TRUE, col = NA, border = N
 grid(nx=NA, ny = NULL)
 barplot(t(as.matrix(CropYield.loSa[,8:10])), border = NA, beside = TRUE, col = GWcolors, ylim = c(0,13), names.arg = 2000:2010, axes = FALSE, add = TRUE, mgp = c(3,0.2,0))
 ## Rainfed
-lines(c(3,4,NA,7,8,NA,11,12,NA,15,16,NA,19,20,NA),
-      rep((CropYield.loSa[,11])[1:5], each = 3), lwd = 3)
+lines(c(3,4,NA,7,8,NA,11,12,NA,15,16,NA,19,20,NA,23,24,NA,27,28,NA,31,32,NA,35,36,NA,39,40,NA,43,44,NA),
+      rep((CropYield.loSa[,11])[1:11], each = 3), lwd = 3)
 box()
 dev.off()
