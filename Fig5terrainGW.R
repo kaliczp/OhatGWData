@@ -5,10 +5,11 @@ names(Terr1) <- c("x","y")
 GW1 <- as.data.frame(read_excel("GW_section_2025_KPnek.xlsx", range = "D1:N125"))
 GW1 <- GW1[, -c(3:5,9)] # Remove repeated and empty cols
 
-Terr2 <- as.data.frame(read_excel("GW_section_2025_KPnek.xlsx", sheet = 2, range = "B2:C183", col_names = FALSE))
+Terr2 <- as.data.frame(read_excel("GW_section_2025_KPnek.xlsx", sheet = 2, range = "A2:C183", col_names = FALSE))
+Terr2 <- Terr2[, -2]
 names(Terr2) <- c("x","y")
-GW2 <- as.data.frame(read_excel("GW_section_2025_KPnek.xlsx", sheet = 2, range = "F1:P92"))
-GW2 <- GW2[, -c(3:5,9)] # Remove repeated and empty cols
+GW2 <- as.data.frame(read_excel("GW_section_2025_KPnek.xlsx", sheet = 2, range = "E1:P92"))
+GW2 <- GW2[, -c(2,4:5,10)] # Remove repeated and empty cols
 
 # forest 966–2487
 Forest1 <- Terr1[Terr1[,1] > 1981 & Terr1[,1] < 3600,]
@@ -67,7 +68,7 @@ mtext("Horizontal distance [m]", side = 1, line = 0, outer = TRUE)
 axis(2, lwd = 0.5)
 mtext("Elevation [m a.s.l.]", side = 2, at = 93, line = 3, las = 0)
 ## Soil background
-polygon(rbind(Terr2, data.frame(x=c(4565.6,0),y=c(0,0))), col = "#BD9A7A", border = NA)
+polygon(rbind(Terr2, data.frame(x=c(0, 4565.6),y=c(87, 87))), col = "#BD9A7A", border = NA)
 grid(ny = NA, col="lightgray", lty = 1)
 lines(rep(c(0,4566,NA),6), rep(88:93, each = 3), col="lightgray", lty = 1)
 ## Polygon to hide
@@ -86,9 +87,9 @@ lines(Terr2, lwd = 3,
 ## Ref
 lines(GW2[,1],GW2[,2], lwd = 2, col = GWcolors["reference"])
 ## Passive
-lines(GW2[,1],GW2[,3], lwd = 2, col = GWcolors["passive"])
+lines(GW2[,1],GW2[,4], lwd = 2, col = GWcolors["passive"])
 ## Active
-lines(GW2[,1],GW2[,6], lwd = 2, col = GWcolors["active"])
+lines(GW2[,1],GW2[,7], lwd = 2, col = GWcolors["active"])
 legend("right", legend = c("Terrain elevation","Reference", "Passive", "Active", "Forest"),
        bty = "n",
        col = c(SoilColor, GWcolors, "forestgreen"), lwd = c(3,2,2,2,8), xpd = NA)
