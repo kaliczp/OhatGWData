@@ -11,7 +11,7 @@ CropYield.clLo[9,4] <- NA
 CropYield.siCl[9,4] <- NA
 CropYield.loSa[c(7,9,11),4] <- NA
 
-pdf("Fig7CropYield.pdf", width = 19/2.54, height = 12/2.54, pointsize = 7)
+pdf("Fig7CropYield.pdf", width = 19/2.54, height = 12/2.54, pointsize = 9)
 par(mfrow = c(3,3), las = 2, mar = c(2.4,0,0,0), oma = c(2.7,2.6,3.1,0.2), lwd = 0.5)
 barplot(t(as.matrix(CropYield.clLo[,2:4])), beside = TRUE, col = NA, border = NA, ylim = c(0,13), lwd = 0.5)
 mtext("shallow GW", las = 1, line = 1)
