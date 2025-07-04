@@ -1,4 +1,5 @@
 SoilColor <- "#99745B"
+SoilBackground <- "#DCB591"
 library(readxl)
 Terr1 <- as.data.frame(read_excel("GW_section_2025_KPnek.xlsx", range = "A2:B249", col_names = FALSE))
 names(Terr1) <- c("x","y")
@@ -40,7 +41,7 @@ axis(1, lwd = 0.4, mgp = c(3, 0.5, 0))
 axis(1, at = c(0,6271.4), labels = NA, tck = 0, lwd = 0.5)
 axis(2, lwd = 0.5)
 ## Soil background
-polygon(rbind(Terr1, data.frame(x=c(6271.4,0),y=c(0,0))), col = "#BD9A7A", border = NA)
+polygon(rbind(Terr1, data.frame(x=c(6271.4,0),y=c(0,0))), col = SoilBackground, border = NA)
 grid(ny = NA, col="lightgray", lty = 1)
 lines(rep(c(0, 6271.4,NA),6), rep(86:91, each = 3), col="lightgray", lty = 1)
 lines(Forest1poly[3:nrow(Forest1)-1,], lwd = 5, col = "forestgreen")
@@ -68,7 +69,7 @@ mtext("Horizontal distance [m]", side = 1, line = 0, outer = TRUE)
 axis(2, lwd = 0.5)
 mtext("Elevation [m a.s.l.]", side = 2, at = 93, line = 3, las = 0)
 ## Soil background
-polygon(rbind(Terr2, data.frame(x=c(0, 4565.6),y=c(87, 87))), col = "#BD9A7A", border = NA)
+polygon(rbind(Terr2, data.frame(x=c(0, 4565.6),y=c(87, 87))), col = SoilBackground, border = NA)
 grid(ny = NA, col="lightgray", lty = 1)
 lines(rep(c(0,4566,NA),6), rep(88:93, each = 3), col="lightgray", lty = 1)
 ## Polygon to hide
