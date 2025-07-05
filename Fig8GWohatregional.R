@@ -8,7 +8,7 @@ Ohat1.mnth <- xts(as.numeric(OhatGWreg[735:761,11]), as.Date(OhatGWreg[735:761,1
 
 pdf("Fig8GWohatregional.pdf", width = 19/2.54, height = 12/2.54, pointsize = 9)
 layout(matrix(c(1, 1, 2, 3), nrow = 2, byrow = TRUE))
-par(las = 1, lwd = 0.5, mar = c(0,0,0,0), oma = c(2.6,2.6,2.6,0.2))
+par(las = 1, lwd = 0.5, mar = c(0,0,0,0), oma = c(2.6,2.6,2.6,0.3))
 plot.zoo(GWreg['1978-12/'],
          type = "n", axes = FALSE,
          lwd = 2, col = GWcolors["active"],
