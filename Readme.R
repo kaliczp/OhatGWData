@@ -162,3 +162,7 @@ write.zoo(daily.amp.date, "Ohat1/ampli.csv", sep = ";", dec = ",")
 daily.mean <- apply.daily(ohat1.xts, mean)
 daily.mean.date <- xts(coredata(daily.mean), as.Date(index(daily.mean)))
 write.zoo(daily.mean.date, "Ohat1/mean.csv", sep = ";", dec = ",")
+
+## Monthly
+monthly.mean <- apply.monthly(ohat1.xts['/2025-01'], function(x){mean(x, na.rm = TRUE)})
+round(monthly.mean['2021-06/2023-12'],2)

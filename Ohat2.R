@@ -151,7 +151,7 @@ daily.mean.rech <- apply.daily(ohat2jav.xts,mean)
 write.zoo(daily.mean.rech, "Ohat2/Napivízszint.csv", sep = ";", dec = ",")
 
 ## Havi átlag
-monthly.mean <- apply.monthly(ohat2jav.xts['/2023-08'], function(x){mean(x, na.rm = TRUE)})
+monthly.mean <- apply.monthly(ohat2jav.xts['/2025-01'], function(x){mean(x, na.rm = TRUE)})
 monthly.mean.date <- xts(coredata(monthly.mean), as.Date(index(monthly.mean)))
 potlas <- xts(rep(NA,3),
               as.Date(paste0('2022-0',2:4,'-01')) - 1)
