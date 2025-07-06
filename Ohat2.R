@@ -3,10 +3,12 @@ ttfiles21 <- dir("2021", patt = "Ohat2[1-9abc][0-9][0-9].TXT")
 ttfiles22 <- dir("2022", patt = "Ohat2[1-9abc][0-9][0-9].TXT")
 ttfiles23 <- dir("2023", patt = "Ohat2[1-9abc][0-9][0-9].TXT")
 ttfiles24 <- dir("2024", patt = "Ohat2[1-9abc][0-9][0-9].TXT")
+ttfiles25 <- dir("2025", patt = "Ohat2[1-9abc][0-9][0-9].TXT")
 ttfiles <- c(paste(2021, ttfiles21, sep = "/"),
              paste(2022, ttfiles22, sep = "/"),
              paste(2023, ttfiles23, sep = "/"),
-             paste(2024, ttfiles24, sep = "/"))
+             paste(2024, ttfiles24, sep = "/"),
+             paste(2025, ttfiles25, sep = "/"))
 ttfiles <- ttfiles[-3] ## Április ua. mint december
 
 ## A fájlok beolvasása
