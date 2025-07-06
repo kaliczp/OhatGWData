@@ -9,7 +9,7 @@ Ohat2.mnth <- xts(as.numeric(OhatGWreg[739:765,12]), as.Date(OhatGWreg[739:765,1
 
 pdf("Fig8GWohatregional.pdf", width = 19/2.54, height = 12/2.54, pointsize = 9)
 layout(matrix(c(1, 1, 2, 3), nrow = 2, byrow = TRUE))
-par(las = 1, lwd = 0.5, mar = c(0,0,0,0), oma = c(2.6,2.6,2.6,0.3))
+par(las = 1, lwd = 0.5, mar = c(0,0,0,0), oma = c(2.6,4.1,2.6,0.3))
 plot.zoo(GWreg['1978-12/'],
          type = "n", axes = FALSE,
          lwd = 2, col = GWcolors["active"],
@@ -26,6 +26,33 @@ lines(as.zoo(GWreg['1978-12/']),
          )
 lines(as.zoo(Ohat2.mnth['2022/']), lwd = 3, col = GWcolors["reference"])
 lines(as.zoo(Ohat1.mnth), lwd = 3, col = GWcolors["passive"])
-plot(c(0,1), c(0,1), axes = FALSE, type = "l")
-plot(c(0,1), c(0,1), axes = FALSE, type = "l")
+text(as.Date("1979-11-02"), -0.5, "A", cex = 1.7)
+polygon(as.Date(paste0(c(1978,1985,1985,1978),"-12-01")),c(4.5,4.5,5.5,5.5), col = "white")
+legend("bottomleft", legend = c("regional mean GW", "Ohat1", "Ohat2"),
+       col = GWcolors[c("active","passive","reference")],
+       lwd = 2,
+       bty = "n")
+plot(index(slopeDatnona2022),
+     coredata(slopeDatnona2022)[,1], ylim = c (0,3),
+     xaxt ="n", yaxt = "n",
+     xlab = "", ylab = "Recharge [mm/day]", pch = 16, col = "lightgray")
+grid(nx=NA, ny = NULL, col="lightgray", lty = 1)
+axis(2, lwd = 0.5)
+axis.Date(1, index(slopeDatnona2022), lab = FALSE, lwd = 0.5)
+axis.Date(1, at = as.Date(paste(2022,5:8,15, sep = "-")), format = "%Y-%m", tcl = 0, lwd = 0.4)
+lines(slope2022.low, lwd = 2, col = "#FF1111"
+      )
+text(as.Date("2022-05-02"), 2.7, "B", cex = 1.7)
+par(mar=c(0,0,0,2.5))
+plot(index(slopeDatnona2023),
+     coredata(slopeDatnona2023)[,1], ylim = c (0,3),
+     yaxt = "n",
+     xlab = "", ylab = "Recharge [mm/day]", xaxt ="n", pch = 16, col = "lightgray")
+grid(nx=NA, ny = NULL, col="lightgray", lty = 1)
+axis(4, lwd = 0.5)
+axis.Date(1, index(slopeDatnona2023), lab = FALSE, lwd = 0.5)
+axis.Date(1, at = as.Date(paste(2023,5:8,15, sep = "-")), format = "%Y-%m", tcl = 0, lwd = 0.4)
+lines(slope2023.low, lwd = 2, col = "#FF1111"
+      )
+text(as.Date("2023-05-02"), 2.7, "C", cex = 1.7)
 dev.off()
