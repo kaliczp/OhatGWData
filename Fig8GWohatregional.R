@@ -27,7 +27,7 @@ lines(as.zoo(GWreg['1978-12/']),
 lines(as.zoo(Ohat2.mnth['2022/']), lwd = 3, col = GWcolors["reference"])
 lines(as.zoo(Ohat1.mnth), lwd = 3, col = GWcolors["passive"])
 text(as.Date("1979-11-02"), -0.5, "A", cex = 1.7)
-polygon(as.Date(paste0(c(1978,1985,1985,1978),"-12-01")),c(4.5,4.5,5.5,5.5), col = "white")
+lines(as.Date(paste0(c(1979,1987),"-01-01")),c(-5,-5), col = "white", lwd = 5, lend = "butt")
 legend("bottomleft", legend = c("regional mean GW", "Ohat1", "Ohat2"),
        col = GWcolors[c("active","passive","reference")],
        lwd = 2,
