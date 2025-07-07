@@ -20,7 +20,7 @@ plot.zoo(GWreg['1978-12/'],
 axis(2, lwd = 0.5, at = -5:-1)
 grid(nx=NA, ny = NULL, col="lightgray", lty = 1)
 axis.Date(3, lwd = 0.4)
-axis(3, at = as.Date(paste0(1979:2023, "-01-01")), labels = NA, tcl = -0.3, lwd = 0.5)
+axis(3, at = as.Date(c(paste0(1979:2023, "-01-01"),"2023-12-15")), labels = NA, tcl = -0.3, lwd = 0.5)
 lines(as.zoo(GWreg['1978-12/']),
          lwd = 2, col = GWcolors["active"],
          )
