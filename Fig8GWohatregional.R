@@ -32,6 +32,10 @@ legend("bottomleft", legend = c("regional mean GW", "Ohat1", "Ohat2"),
        col = GWcolors[c("active","passive","reference")],
        lwd = 2,
        bty = "n")
+lines(as.Date(c("2022-05-01","2022-08-31")),c(-5.4,-5.4), lwd = 3, lend = "butt", col = "#FF1111")
+text(as.Date("2022-05-31"), -5.7, "B")
+text(as.Date("2023-05-31"), -5.7, "C")
+lines(as.Date(c("2023-05-01","2023-08-31")),c(-5.4,-5.4), lwd = 3, lend = "butt", col = "#FF1111")
 plot(index(slopeDatnona2022),
      coredata(slopeDatnona2022)[,1], ylim = c (0,3),
      xaxt ="n", yaxt = "n",
