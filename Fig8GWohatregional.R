@@ -7,7 +7,7 @@ GWreg <- xts(as.numeric(OhatGWreg[-(1:3),"FIG10A"]), as.Date(OhatGWreg[-(1:3), 1
 Ohat1.mnth <- xts(as.numeric(OhatGWreg[735:765,11]), as.Date(OhatGWreg[735:765,10]))
 Ohat2.mnth <- xts(as.numeric(OhatGWreg[739:765,12]), as.Date(OhatGWreg[739:765,10])) 
 
-pdf("Fig8GWohatregional.pdf", width = 19/2.54, height = 12/2.54, pointsize = 9)
+pdf("Fig8GWohatregional.pdf", width = 19/2.54, height = 12/2.54, pointsize = 12)
 layout(matrix(c(1, 1, 2, 3), nrow = 2, byrow = TRUE))
 par(las = 1, lwd = 0.5, mar = c(0,4.1,0,0), oma = c(2.6,0,2.6,0.3))
 plot.zoo(GWreg['1978-12/'],
