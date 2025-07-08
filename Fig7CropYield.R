@@ -61,6 +61,7 @@ barplot(t(as.matrix(CropYield.loSa[,5:7])), border = NA, beside = TRUE, col = GW
 legend("bottom", inset = c(0, -0.4),
        legend = c("Reference", "Passive", "Active", "Rainfed conditions"),
        bty = "n",
+       cex = 1.2,
        col = c(GWcolors, 1) , lwd = 3, ncol = 4, xpd = NA)
 box()
 barplot(t(as.matrix(CropYield.loSa[,8:10])), beside = TRUE, col = NA, border = NA, ylim = c(0,13), axes = FALSE)

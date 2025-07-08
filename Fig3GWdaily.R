@@ -65,6 +65,7 @@ for(gwdepth in c("shall", "medi", "deep")){
         if(gwdepth == "deep") {
             legend("bottom", inset = c(0, -0.33), legend = c("Reference", "Passive", "Active"),
                    bty = "n",
+                   cex = 1.2,
                    col = GWcolors, lwd = 2, ncol = 3, xpd = NA)
             }
     }
