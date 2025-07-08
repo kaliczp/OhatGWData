@@ -13,7 +13,7 @@ png("Fig2GWOhat12.png", width = 190, height = 60, units = "mm", pointsize = 7, r
 pdf("Fig2GWOhat12.pdf", width = 190 / 25.4, height = 60 / 25.4, pointsize = 7)
 }
 par(mar = c(2.6, 4.1, 0.1, 0.1), mgp = c(2.5,1,0), las = 1, mgp = c(3.2,1,0))
-plot.zoo(ohat1.xts, xaxt = "n", xlab ="", ylab = "h [m]", xaxs = "i",
+plot.zoo(ohat1.xts['/2023-12-31'], xaxt = "n", xlab ="", ylab = "h [m]", xaxs = "i",
          ylim = c(-5.05,-3.8), type = "n")
 grid(nx = NA, ny = NULL)
 lines(as.zoo(ohat1.xts), lwd = 2, col = gwcolors[2])
