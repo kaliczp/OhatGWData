@@ -40,7 +40,7 @@ GW_daily.xts <- xts(GW_daily[,-1], GW_daily[,1])
 GW.akt <- -GW_daily.xts["2000/2010"] 
 selectedYears <- as.Date(paste0(2000:2010,"-01-01"))
 
-pdf("Fig3GWdaily.pdf", width = 9/2.54, height = 11/2.54, pointsize = 7)
+pdf("Fig3GWdaily.pdf", width = 9/2.54, height = 11/2.54, pointsize = 9)
 layout(matrix(c(1,2,3,4,5,6), nrow = 3, byrow = TRUE), widths=c(8,1))
 ttletter <- 1
 par(las = 1, mar = c(0,0,0,0), oma=c(5.4,2.7,2.1,0.2), lwd = 0.5)
